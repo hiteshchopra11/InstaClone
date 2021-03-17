@@ -71,9 +71,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/insta_password" />
 
-
         <TextView
-
             android:id="@+id/forgot_login_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -81,14 +79,12 @@
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/or_divider"
             app:layout_constraintEnd_toStartOf="@+id/help_logging_in"
-
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login_button" />
 
 
         <TextView
-
             android:id="@+id/help_logging_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -100,35 +96,9 @@
             app:layout_constraintStart_toEndOf="@+id/forgot_login_text"
             app:layout_constraintTop_toBottomOf="@+id/login_button" />
 
-        <RelativeLayout
+        <include
             android:id="@+id/or_divider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/facebook_login"
-
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/forgot_login_text">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="20dp"
-                android:background="@android:color/black" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:background="@android:color/white"
-                android:padding="2dp"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:text="OR" />
-        </RelativeLayout>
+            layout="@layout/log_in_divider" />
 
         <com.facebook.login.widget.LoginButton
             android:id="@+id/facebook_login"

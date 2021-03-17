@@ -1,12 +1,28 @@
 package com.hiteshchopra.instagramclone.ui.signup
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import com.hiteshchopra.instagramclone.R
+import com.hiteshchopra.instagramclone.databinding.ActivitySignUpBinding
+import com.hiteshchopra.instagramclone.ui.base.BaseActivity
+import com.hiteshchopra.instagramclone.ui.login.LoginActivity
 
-class SignUpActivity : AppCompatActivity() {
+class SignUpActivity : BaseActivity<ActivitySignUpBinding>() {
+    override fun layoutId(): Int = R.layout.activity_sign_up
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
+        addListeners()
+    }
+
+    private fun addListeners() {
+        with(binding) {
+            signIn.setOnClickListener {
+                val intent = Intent(this@SignUpActivity, LoginActivity::class.java)
+                overridePendingTransition(0, 0)
+                intent.flags = Intent.FLAG_ACTIVITY_NO_ANIMATION
+                startActivity(intent)
+            }
+        }
     }
 }

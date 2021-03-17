@@ -20,5 +20,4 @@ abstract class BaseActivity<B : ViewDataBinding> : DaggerAppCompatActivity() {
 
     @LayoutRes
     protected abstract fun layoutId(): Int
-
 }
