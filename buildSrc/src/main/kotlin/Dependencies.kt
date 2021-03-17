@@ -104,7 +104,11 @@ object Lib {
     object Facebook {
         private const val FACEBOOK_LOGIN_VERSION = "[8,9)"
         const val FACEBOOK_LOGIN = "com.facebook.android:facebook-login:$FACEBOOK_LOGIN_VERSION"
+    }
 
+    object MultiDex{
+        private const val MULTIDEX_VERSION ="2.0.1"
+        const val MULTIDEX= "androidx.multidex:multidex:$MULTIDEX_VERSION"
     }
 }
 

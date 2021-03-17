@@ -73,6 +73,9 @@ dependencies {
     /*DI*/
     implementation(Lib.Di.DAGGER)
     implementation(Lib.Di.DAGGER_ANDROID)
+    implementation("androidx.appcompat:appcompat:1.2.0")
+    implementation("com.google.android.material:material:1.3.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     kapt(Lib.Di.DAGGER_PROCESSOR)
     kapt(Lib.Di.DAGGER_COMPILER)
     kaptTest(Lib.Di.DAGGER_COMPILER)
@@ -87,14 +90,17 @@ dependencies {
     /* Glide */
     implementation(Lib.ImageLibrary.GLIDE)
 
-    /*Navigation Component*/
+    /* Navigation Component */
     implementation(Lib.Navigation.NAVIGATION_UI)
     implementation(Lib.Navigation.NAVIGATION_FRAGMENT)
 
-    /*Facebook Login*/
+    /* Facebook Login */
     implementation(Lib.Facebook.FACEBOOK_LOGIN)
 
-    /*Testing*/
+    /* MultiDex */
+    implementation(Lib.MultiDex.MULTIDEX)
+
+    /* Testing */
     testImplementation(TestLib.JUNIT)
     testImplementation(TestLib.CORE_TEST)
     testImplementation(TestLib.ANDROID_JUNIT)
