@@ -87,6 +87,13 @@ dependencies {
     /* Glide */
     implementation(Lib.ImageLibrary.GLIDE)
 
+    /*Navigation Component*/
+    implementation(Lib.Navigation.NAVIGATION_UI)
+    implementation(Lib.Navigation.NAVIGATION_FRAGMENT)
+
+    /*Facebook Login*/
+    implementation(Lib.Facebook.FACEBOOK_LOGIN)
+
     /*Testing*/
     testImplementation(TestLib.JUNIT)
     testImplementation(TestLib.CORE_TEST)
