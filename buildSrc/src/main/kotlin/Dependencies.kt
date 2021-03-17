@@ -92,6 +92,20 @@ object Lib {
         private const val GLIDE_VERSION = "4.11.0"
         const val GLIDE = "com.github.bumptech.glide:glide:${GLIDE_VERSION}"
     }
+
+    object Navigation {
+        private const val NAVIGATION_COMPONENT_VERSION = "2.3.4"
+        const val NAVIGATION_FRAGMENT =
+            "androidx.navigation:navigation-fragment-ktx:$NAVIGATION_COMPONENT_VERSION"
+        const val NAVIGATION_UI =
+            "androidx.navigation:navigation-ui-ktx:$NAVIGATION_COMPONENT_VERSION"
+    }
+
+    object Facebook {
+        private const val FACEBOOK_LOGIN_VERSION = "[8,9)"
+        const val FACEBOOK_LOGIN = "com.facebook.android:facebook-login:$FACEBOOK_LOGIN_VERSION"
+
+    }
 }
 
 object TestLib {
