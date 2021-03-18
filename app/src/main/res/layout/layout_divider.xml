@@ -7,8 +7,8 @@
     <View
         android:layout_width="0dp"
         android:layout_height="@dimen/view_height"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="@dimen/view_margin_start_end"
+        android:layout_marginTop="@dimen/view_margin_top"
         android:layout_weight="4"
         android:background="@color/black" />
 
@@ -23,8 +23,8 @@
     <View
         android:layout_width="0dp"
         android:layout_height="@dimen/view_height"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginTop="@dimen/view_margin_top"
+        android:layout_marginEnd="@dimen/view_margin_start_end"
         android:layout_weight="4"
         android:background="@color/black" />
 </LinearLayout>

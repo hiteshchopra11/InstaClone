@@ -6,4 +6,6 @@
     <dimen name="help_login">16sp</dimen>
     <dimen name="view_height">1dp</dimen>
     <dimen name="view_padding">2dp</dimen>
+    <dimen name="view_margin_top">12dp</dimen>
+    <dimen name="view_margin_start_end">25dp</dimen>
 </resources>
