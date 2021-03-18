@@ -3,6 +3,7 @@ plugins {
     id(BuildPlugins.KOTLIN_ANDROID_PLUGIN)
     id(BuildPlugins.KOTLIN_PARCELABLE_PLUGIN)
     id(BuildPlugins.KOTLIN_KAPT)
+    id(BuildPlugins.GOOGLE_GRADLE_SERVICES)
     id("org.jlleitschuh.gradle.ktlint")
 }
 
@@ -100,6 +101,9 @@ dependencies {
 
     /* MultiDex */
     implementation(Lib.MultiDex.MULTIDEX)
+
+    /* Firebase Sign In */
+    implementation(Lib.Firebase.FIREBASE_LOGIN)
 
     /* Testing */
     testImplementation(TestLib.JUNIT)

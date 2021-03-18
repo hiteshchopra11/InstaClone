@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_common">12dp</dimen>
+    <dimen name="size_logo">50sp</dimen>
+    <dimen name="margin_common">16dp</dimen>
+    <dimen name="help_login">16sp</dimen>
+    <dimen name="view_height">1dp</dimen>
+    <dimen name="view_padding">2dp</dimen>
+</resources>

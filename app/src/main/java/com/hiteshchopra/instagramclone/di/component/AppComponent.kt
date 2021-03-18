@@ -4,6 +4,7 @@ import android.content.Context
 import com.hiteshchopra.instagramclone.BaseApplication
 import com.hiteshchopra.instagramclone.di.module.ActivityBindingModule
 import com.hiteshchopra.instagramclone.di.module.AppModule
+import com.hiteshchopra.instagramclone.di.module.ViewModelFactoryModule
 import com.hiteshchopra.instagramclone.di.qualifier.ApplicationContext
 import dagger.BindsInstance
 import dagger.Component
@@ -17,6 +18,7 @@ import javax.inject.Singleton
         AppModule::class,
         ActivityBindingModule::class,
         AndroidSupportInjectionModule::class,
+        ViewModelFactoryModule::class
     ]
 )
 interface AppComponent : AndroidInjector<BaseApplication> {

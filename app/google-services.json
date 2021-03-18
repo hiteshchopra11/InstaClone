@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "476171767557",
+    "project_id": "instagram-clone-f902a",
+    "storage_bucket": "instagram-clone-f902a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476171767557:android:b9906c3ba88cbe2a0eb16c",
+        "android_client_info": {
+          "package_name": "com.hiteshchopra.instagramclone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "476171767557-qs24i483ef191l7ms5kmarumhjg62lvs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5A-bE9j15QWJHGTKI2uA4QM-hSuluP-M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "476171767557-qs24i483ef191l7ms5kmarumhjg62lvs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476171767557:android:75c45bae665d0e390eb16c",
+        "android_client_info": {
+          "package_name": "com.mutualmobile.praxis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "476171767557-qs24i483ef191l7ms5kmarumhjg62lvs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5A-bE9j15QWJHGTKI2uA4QM-hSuluP-M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "476171767557-qs24i483ef191l7ms5kmarumhjg62lvs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

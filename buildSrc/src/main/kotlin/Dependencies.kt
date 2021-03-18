@@ -4,7 +4,7 @@ object BuildPlugins {
     private const val TOOLS_BUILD = "4.0.0"
     private const val KT_LINT = "9.2.1"
     private const val SAFE_ARGS = "2.3.0"
-
+    private const val GOOGLE_SERVICE_VERSION = "4.3.3"
     const val TOOLS_BUILD_GRADLE =
         "com.android.tools.build:gradle:${TOOLS_BUILD}"
     const val KTLINT_GRADLE_PLUGIN =
@@ -17,6 +17,8 @@ object BuildPlugins {
     const val KOTLIN_PARCELABLE_PLUGIN = "kotlin-parcelize"
     const val KOTLIN_KAPT = "kotlin-kapt"
     const val SAFE_ARGS_PLUGIN = "androidx.navigation.safeargs.kotlin"
+    const val GOOGLE_SERVICE = "com.google.gms:google-services:$GOOGLE_SERVICE_VERSION"
+    const val GOOGLE_GRADLE_SERVICES = "com.google.gms.google-services"
 }
 
 object Lib {
@@ -106,9 +108,14 @@ object Lib {
         const val FACEBOOK_LOGIN = "com.facebook.android:facebook-login:$FACEBOOK_LOGIN_VERSION"
     }
 
-    object MultiDex{
-        private const val MULTIDEX_VERSION ="2.0.1"
-        const val MULTIDEX= "androidx.multidex:multidex:$MULTIDEX_VERSION"
+    object MultiDex {
+        private const val MULTIDEX_VERSION = "2.0.1"
+        const val MULTIDEX = "androidx.multidex:multidex:$MULTIDEX_VERSION"
+    }
+
+    object Firebase {
+        private const val FIREBASE_LOGIN_VERSION = "19.2.0"
+        const val FIREBASE_LOGIN = "com.google.firebase:firebase-auth:$FIREBASE_LOGIN_VERSION"
     }
 }
 

@@ -37,4 +37,7 @@ dependencies {
     api(Lib.Di.DAGGER)
     kapt(Lib.Di.DAGGER_PROCESSOR)
     kapt(Lib.Di.DAGGER_COMPILER)
+
+    /* Firebase Sign In */
+    implementation(Lib.Firebase.FIREBASE_LOGIN)
 }
