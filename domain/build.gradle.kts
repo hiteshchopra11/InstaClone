@@ -40,4 +40,7 @@ dependencies {
 
     /* Firebase Sign In */
     implementation(Lib.Firebase.FIREBASE_LOGIN)
+
+    /* Coroutines Play Service */
+    implementation(Lib.CoroutinesPlayService.COROUTINES_PLAY_SERVICE)
 }

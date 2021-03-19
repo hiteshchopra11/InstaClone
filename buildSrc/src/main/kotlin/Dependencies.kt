@@ -117,6 +117,12 @@ object Lib {
         private const val FIREBASE_LOGIN_VERSION = "19.2.0"
         const val FIREBASE_LOGIN = "com.google.firebase:firebase-auth:$FIREBASE_LOGIN_VERSION"
     }
+
+    object CoroutinesPlayService {
+        private const val COROUTINES_PLAY_SERVICE_VERSION = "1.1.1"
+        const val COROUTINES_PLAY_SERVICE =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$COROUTINES_PLAY_SERVICE_VERSION"
+    }
 }
 
 object TestLib {
