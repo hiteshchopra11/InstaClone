@@ -1,11 +1,11 @@
 package com.hiteshchopra.instagramclone.utils
 
 object Validity {
-    fun isEmailValid(email: String): Boolean {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    fun String.isInvalidEmail(): Boolean {
+        return !android.util.Patterns.EMAIL_ADDRESS.matcher(this).matches()
     }
 
-    fun isPasswordValid(password: String): Boolean {
-        return password.length >= 6
+    fun String.isShortPassword(): Boolean {
+        return this.length < 6
     }
 }

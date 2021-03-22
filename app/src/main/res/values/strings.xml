@@ -9,7 +9,13 @@
     <string name="sign_up">Sign Up</string>
     <string name="or">OR</string>
     <string name="forgot_your_login_details">Forgot your login details?</string>
-    <string name="get_help_logging_in"> Get help logging in.</string>
+    <string name="get_help_logging_in">Get help logging in.</string>
     <string name="don_t_have_an_account_sign_up">Don\'t have an account? Sign up.</string>
     <string name="already_have_an_account_sign_in">Already have an account? Sign in.</string>
+    <string name="signed_in_successfully">Signed in Successfully</string>
+    <string name="signed_up_successfully">Signed Up Successfully</string>
+    <string name="enter_email">Please enter an email</string>
+    <string name="enter_password">Please enter a password</string>
+    <string name="incorrect_email">The email format is incorrect! Please Enter a valid email</string>
+    <string name="short_password">Password too short! Please enter at least 6 characters</string>
 </resources>

@@ -11,11 +11,4 @@ import dagger.android.support.DaggerAppCompatActivity
 @Module(includes = [BaseActivityModule::class])
 abstract class SignUpActivityModule {
 
-    @Binds
-    @ActivityContext
-    abstract fun provideActivityContext(activity: SignUpActivity): Context
-
-    @Binds
-    @ActivityScope
-    abstract fun provideActivity(signUpActivity: SignUpActivity): DaggerAppCompatActivity
 }

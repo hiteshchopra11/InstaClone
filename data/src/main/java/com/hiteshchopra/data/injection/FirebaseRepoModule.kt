@@ -1,10 +1,10 @@
 package com.hiteshchopra.data.injection
 
+import com.google.firebase.auth.FirebaseAuth
 import com.hiteshchopra.data.repository.FirebaseRepo
-import com.hiteshchopra.data.sources.IFirebaseSignInDataSource
-import com.hiteshchopra.data.sources.IFirebaseSignUpDataSource
 import dagger.Module
 import dagger.Provides
+import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Singleton
 
 @Module
@@ -13,9 +13,9 @@ object FirebaseRepoModule {
     @Singleton
     @JvmStatic
     fun provideFirebaseRepo(
-        firebaseSignUpDataSource: IFirebaseSignUpDataSource,
-        firebaseSignInDataSource: IFirebaseSignInDataSource
+        dispatcher: CoroutineDispatcher,
+        firebaseAuth: FirebaseAuth
     ): FirebaseRepo {
-        return FirebaseRepo(firebaseSignUpDataSource, firebaseSignInDataSource)
+        return FirebaseRepo(dispatcher, firebaseAuth)
     }
 }

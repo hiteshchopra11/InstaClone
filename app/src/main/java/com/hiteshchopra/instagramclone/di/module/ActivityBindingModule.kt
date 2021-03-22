@@ -1,6 +1,9 @@
 package com.hiteshchopra.instagramclone.di.module
 
+import android.content.Context
+import com.hiteshchopra.instagramclone.di.qualifier.ActivityContext
 import com.hiteshchopra.instagramclone.di.scope.ActivityScope
+import com.hiteshchopra.instagramclone.ui.base.BaseActivity
 import com.hiteshchopra.instagramclone.ui.login.LoginActivity
 import com.hiteshchopra.instagramclone.ui.login.LoginActivityModule
 import com.hiteshchopra.instagramclone.ui.signup.SignUpActivity
@@ -29,5 +32,12 @@ abstract class ActivityBindingModule {
  * Activity specific common dependencies should be placed here
  */
 @Module
-open class BaseActivityModule {
+abstract class BaseActivityModule {
+    @Binds
+    @ActivityContext
+    abstract fun provideActivityContext(activity: BaseActivity<*,*>): Context
+
+    @Binds
+    @ActivityScope
+    abstract fun provideActivity(loginActivity: BaseActivity<*,*>): DaggerAppCompatActivity
 }

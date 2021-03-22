@@ -2,18 +2,18 @@ package com.hiteshchopra.instagramclone.ui.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.lifecycle.Observer
-import com.google.firebase.auth.FirebaseAuth
-import com.hiteshchopra.domain.model.User
 import com.hiteshchopra.instagramclone.R
 import com.hiteshchopra.instagramclone.databinding.ActivityLoginBinding
 import com.hiteshchopra.instagramclone.ui.base.ActivityNavigator
 import com.hiteshchopra.instagramclone.ui.base.BaseActivity
 import com.hiteshchopra.instagramclone.ui.home.HomeActivity
 import com.hiteshchopra.instagramclone.ui.signup.SignUpActivity
-import com.hiteshchopra.instagramclone.utils.Validity
+import com.hiteshchopra.instagramclone.utils.Toast.emptyEmailToast
+import com.hiteshchopra.instagramclone.utils.Toast.emptyPasswordToast
+import com.hiteshchopra.instagramclone.utils.Toast.invalidEmailToast
+import com.hiteshchopra.instagramclone.utils.Toast.shortPasswordToast
+import com.hiteshchopra.instagramclone.utils.Toast.toastMessage
 
 
 class LoginActivity : BaseActivity<ActivityLoginBinding, LoginVM>() {
@@ -37,63 +37,46 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginVM>() {
             layoutUsernamePassword.btnFirebaseLoginSignup.setOnClickListener {
                 val email = binding.layoutUsernamePassword.etUsername.text.toString()
                 val password = binding.layoutUsernamePassword.etPassword.text.toString()
-                validateAndSignInFirebase(email, password)
+                viewModel.validateEmailPassword(email, password)
+                validationResultAndSignIn(email, password)
             }
         }
     }
 
-    private fun validateAndSignInFirebase(email: String, password: String) {
-        var user= User(email,password)
-        when (Validity.isEmailValid(email) && Validity.isPasswordValid(password)) {
-            true -> {
-                viewModel.firebaseSignIn(user)
-                firebaseSignInResult()
-            }
-            false -> {
-                if (!Validity.isEmailValid(email)) {
-                    Toast.makeText(
-                        this@LoginActivity,
-                        "Please enter a valid email",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                } else {
-                    Toast.makeText(
-                        this@LoginActivity,
-                        "Please enter a password of minimum 6 characters",
-                        Toast.LENGTH_SHORT
-                    ).show()
+
+    private fun validationResultAndSignIn(email: String, password: String) {
+        viewModel.validateState.observe(this, { validationState ->
+            when (validationState) {
+                is SignInValidateState.EmptyEmail ->
+                    emptyEmailToast()
+                is SignInValidateState.EmptyPassword ->
+                    emptyPasswordToast()
+                is SignInValidateState.InvalidEmail ->
+                    invalidEmailToast()
+                is SignInValidateState.ShortPassword ->
+                    shortPasswordToast()
+                is SignInValidateState.Valid -> {
+                    viewModel.firebaseSignUp(email, password)
+                    firebaseSignInResult()
                 }
             }
-        }
+        })
     }
 
     private fun firebaseSignInResult() {
-        viewModel.viewState.observe(this, Observer { state ->
-            when (state) {
-                is SignInViewState.Loading -> {
+        viewModel.loginState.observe(this, { loginState ->
+            when (loginState) {
+                is LoginViewState.Loading -> {
                     handleDataLoadingUi(true)
                 }
-                is SignInViewState.Success -> {
+                is LoginViewState.Success -> {
                     handleDataLoadingUi(false)
-                    Toast.makeText(
-                        this,
-                        "Signed In Successfully",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    ActivityNavigator.startActivityWithAnimation(
-                        HomeActivity::class.java,
-                        R.anim.slide_left_in,
-                        R.anim.slide_left_out,
-                        this
-                    )
+                    toastMessage(getString(R.string.signed_up_successfully))
+                    startHomeActivity()
                 }
-                is SignInViewState.Error -> {
+                is LoginViewState.Error -> {
                     handleDataLoadingUi(false)
-                    Toast.makeText(
-                        this,
-                        "Error occurred ${state.error?.message}",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    toastMessage(loginState.error?.message.toString())
                 }
             }
         })
@@ -101,8 +84,16 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginVM>() {
 
     private fun handleDataLoadingUi(loading: Boolean) {
         with(binding) {
-            pbSignUp.isVisible = loading
-            layoutUsernamePassword.btnFirebaseLoginSignup.isEnabled = !loading
+            pbSignIn.isVisible = loading
         }
+    }
+
+    private fun startHomeActivity() {
+        ActivityNavigator.startActivityWithAnimation(
+            HomeActivity::class.java,
+            R.anim.slide_left_in,
+            R.anim.slide_left_out,
+            this
+        )
     }
 }

@@ -9,11 +9,10 @@ import com.google.firebase.auth.FirebaseUser
  * @param <T>
  */
 sealed class SafeResult<out T> {
-
     data class Success<T>(val result: FirebaseUser?) : SafeResult<T>()
     data class Failure(
         val exception: Exception? = Exception("Unknown Error"),
-        val message: String = exception?.localizedMessage ?: ""
+        val message: String = exception?.message ?: ""
     ) : SafeResult<Nothing>()
 
     object NetworkError : SafeResult<Nothing>()
