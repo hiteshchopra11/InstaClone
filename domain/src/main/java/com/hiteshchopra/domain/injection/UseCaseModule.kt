@@ -1,6 +1,7 @@
 package com.hiteshchopra.domain.injection
 
 import com.hiteshchopra.data.repository.FirebaseRepo
+import com.hiteshchopra.data.repository.FirebaseRepoImpl
 import com.hiteshchopra.domain.usecase.UseCaseFirebaseLogin
 import com.hiteshchopra.domain.usecase.UseCaseFirebaseSignUp
 import dagger.Module

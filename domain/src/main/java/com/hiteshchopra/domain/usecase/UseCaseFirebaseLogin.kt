@@ -3,6 +3,7 @@ package com.hiteshchopra.domain.usecase
 import com.google.firebase.auth.FirebaseUser
 import com.hiteshchopra.data.SafeResult
 import com.hiteshchopra.data.repository.FirebaseRepo
+import com.hiteshchopra.data.repository.FirebaseRepoImpl
 import com.hiteshchopra.domain.model.User
 
 class UseCaseFirebaseLogin(

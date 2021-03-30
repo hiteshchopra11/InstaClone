@@ -3,6 +3,7 @@ package com.hiteshchopra.domain.usecase
 import com.google.firebase.auth.FirebaseUser
 import com.hiteshchopra.data.SafeResult
 import com.hiteshchopra.data.repository.FirebaseRepo
+import com.hiteshchopra.data.repository.FirebaseRepoImpl
 import com.hiteshchopra.domain.model.User
 
 class UseCaseFirebaseSignUp(
@@ -12,7 +13,7 @@ class UseCaseFirebaseSignUp(
         executableParam: User
     ): SafeResult<FirebaseUser> {
         return firebaseRepo.firebaseSignUp(
-            username = executableParam.username,
+            email = executableParam.username,
             password = executableParam.password
         )
     }

@@ -5,6 +5,7 @@ object BuildPlugins {
     private const val KT_LINT = "9.2.1"
     private const val SAFE_ARGS = "2.3.0"
     private const val GOOGLE_SERVICE_VERSION = "4.3.3"
+    private const val HILT_VERSION = "2.33-beta"
     const val TOOLS_BUILD_GRADLE =
         "com.android.tools.build:gradle:${TOOLS_BUILD}"
     const val KTLINT_GRADLE_PLUGIN =
@@ -19,6 +20,7 @@ object BuildPlugins {
     const val SAFE_ARGS_PLUGIN = "androidx.navigation.safeargs.kotlin"
     const val GOOGLE_SERVICE = "com.google.gms:google-services:$GOOGLE_SERVICE_VERSION"
     const val GOOGLE_GRADLE_SERVICES = "com.google.gms.google-services"
+    const val HILT = "com.google.dagger:hilt-android-gradle-plugin:$HILT_VERSION"
 }
 
 object Lib {
@@ -123,6 +125,12 @@ object Lib {
         const val COROUTINES_PLAY_SERVICE =
             "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$COROUTINES_PLAY_SERVICE_VERSION"
     }
+
+    object DaggerHilt {
+        private const val HILT_VERSION = "2.33-beta"
+        const val HILT_ANDROID = "com.google.dagger:hilt-android:$HILT_VERSION"
+        const val HILT_COMPILER = "com.google.dagger:hilt-compiler:$HILT_VERSION"
+    }
 }
 
 object TestLib {
@@ -134,6 +142,11 @@ object TestLib {
     private const val CORE_TEST_VERSION = "1.2.0"
     private const val JUNIT_VERSION = "4.13"
 
+
+
+
+    private const val MOCKK_VERSION = "1.9.3"
+
     const val COROUTINES =
         "org.jetbrains.kotlinx:kotlinx-coroutines-test:${COROUTINES_VERSION}"
     const val ROBO_ELECTRIC = "org.robolectric:robolectric:${ROBO_ELECTRIC_VERSION}"
@@ -144,6 +157,7 @@ object TestLib {
     const val ANDROID_JUNIT = "androidx.test.ext:junit:${ANDROID_JUNIT_VERSION}"
     const val ARCH_CORE = "androidx.arch.core:core-testing:${ARCH_CORE_VERSION}"
     const val MOCKITO_CORE = "org.mockito:mockito-core:3.3.3"
+    const val MOCKK = "io.mockk:mockk:$MOCKK_VERSION"
 }
 
 object DebugLib {

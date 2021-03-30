@@ -2,6 +2,7 @@ package com.hiteshchopra.data.injection
 
 import com.google.firebase.auth.FirebaseAuth
 import com.hiteshchopra.data.repository.FirebaseRepo
+import com.hiteshchopra.data.repository.FirebaseRepoImpl
 import dagger.Module
 import dagger.Provides
 import kotlinx.coroutines.CoroutineDispatcher
@@ -16,6 +17,6 @@ object FirebaseRepoModule {
         dispatcher: CoroutineDispatcher,
         firebaseAuth: FirebaseAuth
     ): FirebaseRepo {
-        return FirebaseRepo(dispatcher, firebaseAuth)
+        return FirebaseRepoImpl(dispatcher,firebaseAuth)
     }
 }

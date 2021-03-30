@@ -62,7 +62,7 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":domain"))
 
-    /*Kotlin*/
+    /* Kotlin */
     api(Lib.Kotlin.KT_STD)
     api(Lib.Kotlin.KTX_CORE)
 
@@ -72,7 +72,7 @@ dependencies {
     implementation(Lib.Android.MATERIAL_DESIGN)
     implementation(Lib.Android.LIFECYCLE_VIEWMODEL_KTX)
 
-    /*DI*/
+    /* DI */
     implementation(Lib.Di.DAGGER)
     implementation(Lib.Di.DAGGER_ANDROID)
     implementation("androidx.appcompat:appcompat:1.2.0")
@@ -116,5 +116,5 @@ dependencies {
     testImplementation(TestLib.MOCK_WEB_SERVER)
     testImplementation(TestLib.ROBO_ELECTRIC)
     testImplementation(TestLib.COROUTINES)
-    testImplementation(TestLib.MOCKITO_CORE)
+    testImplementation(TestLib.MOCKK)
 }

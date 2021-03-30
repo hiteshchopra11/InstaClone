@@ -43,4 +43,7 @@ dependencies {
 
     /* Coroutines Play Service */
     implementation(Lib.CoroutinesPlayService.COROUTINES_PLAY_SERVICE)
+
+    /* Testing */
+    testImplementation(TestLib.MOCKK)
 }
