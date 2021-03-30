@@ -12,7 +12,6 @@ import javax.inject.Inject
 abstract class BaseActivity<B : ViewDataBinding, VM : ViewModel> : DaggerAppCompatActivity() {
     protected lateinit var binding: B
     lateinit var viewModel: VM
-
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 

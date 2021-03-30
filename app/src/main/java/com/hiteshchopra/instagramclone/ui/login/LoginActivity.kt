@@ -72,7 +72,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginVM>() {
                 is LoginViewState.Success -> {
                     handleDataLoadingUi(false)
                     toastMessage(getString(R.string.signed_up_successfully))
-                    startHomeActivity()
+                    ActivityNavigator.startActivity(
+                        HomeActivity::class.java,
+                        this
+                    )
                 }
                 is LoginViewState.Error -> {
                     handleDataLoadingUi(false)
@@ -88,12 +91,4 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginVM>() {
         }
     }
 
-    private fun startHomeActivity() {
-        ActivityNavigator.startActivityWithAnimation(
-            HomeActivity::class.java,
-            R.anim.slide_left_in,
-            R.anim.slide_left_out,
-            this
-        )
-    }
 }

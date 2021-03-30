@@ -23,34 +23,12 @@ object TestNewRepositoryModule {
         return Dispatchers.IO
     }
 
-//    @Provides
-//    @Singleton
-//    @JvmStatic
-//    fun provideFirebaseAuth(): FirebaseAuth {
-//        return mockk<FirebaseAuth>()
-//    }
-
     @Provides
     @Singleton
     @JvmStatic
     fun provideFirebaseListener(): FirebaseListener {
         return RepositoryTest()
     }
-
-//    @Provides
-//    @Singleton
-//    @JvmStatic
-//    fun provideNewFirebaseRepository(
-//        auth: FirebaseAuth,
-//        listener: FirebaseListener,
-//        dispatcher: CoroutineDispatcher
-//    ): NewFirebaseRepository {
-//        return NewFirebaseRepository(
-//            dispatcher = dispatcher,
-//            mAuth = auth,
-//            observer = listener
-//        )
-//    }
 
     @Provides
     @Singleton

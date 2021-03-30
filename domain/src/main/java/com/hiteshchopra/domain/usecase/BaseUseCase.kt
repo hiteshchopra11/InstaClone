@@ -1,8 +1,14 @@
 package com.hiteshchopra.domain.usecase
 
-import com.google.firebase.auth.FirebaseAuth
-
 interface BaseUseCase<out Result, in ExecutableParam> {
+    /**
+     * Perform an operation with no input parameters.
+     * Will throw an exception by default, if not implemented but invoked.
+     *
+     * @return
+     */
+    suspend fun perform(): Result = throw NotImplementedError()
+
     /**
      * Perform an operation.
      *  Will throw an exception by default, if not implemented but invoked.

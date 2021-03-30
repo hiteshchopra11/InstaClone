@@ -1,7 +1,8 @@
 package com.hiteshchopra.instagramclone.di.component
 
 import android.content.Context
-import com.hiteshchopra.data.injection.FirebaseRepoModule
+import com.hiteshchopra.data.injection.RepoModule
+import com.hiteshchopra.data.injection.SourcesModule
 import com.hiteshchopra.domain.injection.UseCaseModule
 import com.hiteshchopra.instagramclone.BaseApplication
 import com.hiteshchopra.instagramclone.di.module.ActivityBindingModule
@@ -22,9 +23,10 @@ import javax.inject.Singleton
         ActivityBindingModule::class,
         AndroidSupportInjectionModule::class,
         ViewModelFactoryModule::class,
-        FirebaseRepoModule::class,
+        RepoModule::class,
         UseCaseModule::class,
-        NetworkModule::class
+        NetworkModule::class,
+        SourcesModule::class
     ]
 )
 interface AppComponent : AndroidInjector<BaseApplication> {

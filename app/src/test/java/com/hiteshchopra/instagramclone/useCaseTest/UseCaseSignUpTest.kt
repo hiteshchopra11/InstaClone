@@ -1,9 +1,8 @@
 package com.hiteshchopra.instagramclone.useCaseTest
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.hiteshchopra.data.SafeResult
+import com.hiteshchopra.data.FirebaseSafeResult
 import com.hiteshchopra.data.repository.FirebaseRepo
 import com.hiteshchopra.domain.model.User
 import com.hiteshchopra.domain.usecase.UseCaseFirebaseSignUp
@@ -42,9 +41,9 @@ class UseCaseSignUpTest : BaseTest() {
             val user: User = User("valid@gmail.com", "12345678")
             coEvery {
                 mockRepository.firebaseSignUp(any(), any())
-            } returns SafeResult.Success(mockFirebaseUser)
+            } returns FirebaseSafeResult.Success(mockFirebaseUser)
             val result = useCaseFirebaseSignUp.perform(user)
-            assert(result is SafeResult.Success)
+            assert(result is FirebaseSafeResult.Success)
         }
     }
 
@@ -54,9 +53,9 @@ class UseCaseSignUpTest : BaseTest() {
             val user: User = User("valid@gmail.com", "12345678")
             coEvery {
                 mockRepository.firebaseSignUp(any(), any())
-            } returns SafeResult.Failure()
+            } returns FirebaseSafeResult.Failure()
             val result = useCaseFirebaseSignUp.perform(user)
-            assert(result is SafeResult.Failure)
+            assert(result is FirebaseSafeResult.Failure)
         }
     }
 }

@@ -3,7 +3,7 @@ package com.hiteshchopra.instagramclone.ui.login
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.hiteshchopra.data.SafeResult
+import com.hiteshchopra.data.FirebaseSafeResult
 import com.hiteshchopra.domain.model.User
 import com.hiteshchopra.domain.usecase.UseCaseFirebaseLogin
 import com.hiteshchopra.instagramclone.ui.base.BaseVM
@@ -42,10 +42,10 @@ class LoginVM @Inject constructor(
         _loginState.value = LoginViewState.Loading
         viewModelScope.launch {
             when (val result = useCaseFirebaseLogin.perform(user)) {
-                is SafeResult.Success -> {
+                is FirebaseSafeResult.Success -> {
                     _loginState.value = LoginViewState.Success
                 }
-                is SafeResult.Failure -> {
+                is FirebaseSafeResult.Failure -> {
                     _loginState.value = LoginViewState.Error(result.exception)
                 }
             }

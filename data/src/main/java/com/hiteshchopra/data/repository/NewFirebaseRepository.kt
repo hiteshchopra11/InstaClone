@@ -42,11 +42,11 @@ class NewFirebaseRepository(
 
 
 //
-//    suspend fun duplicateLogIn(email: String, password: String): SafeResult<FirebaseUser> {
-//        return suspendCancellableCoroutine<SafeResult<FirebaseUser>> {
+//    suspend fun duplicateLogIn(email: String, password: String): FirebaseSafeResult<FirebaseUser> {
+//        return suspendCancellableCoroutine<FirebaseSafeResult<FirebaseUser>> {
 //            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
 //                if (task.isSuccessful)
-//                    it.resume(SafeResult.Success(mAuth.currentUser!!))
+//                    it.resume(FirebaseSafeResult.Success(mAuth.currentUser!!))
 //                else
 //                    it.resumeWithException(task.exception as Throwable)
 //            }

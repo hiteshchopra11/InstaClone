@@ -4,6 +4,7 @@ plugins {
     id(BuildPlugins.KOTLIN_PARCELABLE_PLUGIN)
     id(BuildPlugins.KOTLIN_KAPT)
     id(BuildPlugins.GOOGLE_GRADLE_SERVICES)
+    id(BuildPlugins.SAFE_ARGS_PLUGIN)
     id("org.jlleitschuh.gradle.ktlint")
 }
 
@@ -78,6 +79,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("com.google.android.material:material:1.3.0")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
     kapt(Lib.Di.DAGGER_PROCESSOR)
     kapt(Lib.Di.DAGGER_COMPILER)
     kaptTest(Lib.Di.DAGGER_COMPILER)

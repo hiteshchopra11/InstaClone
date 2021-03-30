@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeScreen">
+    <fragment
+        android:id="@+id/homeScreen"
+        android:name="com.hiteshchopra.instagramclone.ui.home.fragment.HomeScreen"
+        android:label="fragment_home_screen"
+        tools:layout="@layout/fragment_home_screen" />
+    <fragment
+        android:id="@+id/searchScreen"
+        android:name="com.hiteshchopra.instagramclone.ui.home.fragment.SearchScreen"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/reelsScreen"
+        android:name="com.hiteshchopra.instagramclone.ui.home.fragment.ReelsScreen"
+        android:label="fragment_reels"
+        tools:layout="@layout/fragment_reels" />
+    <fragment
+        android:id="@+id/likedScreen"
+        android:name="com.hiteshchopra.instagramclone.ui.home.fragment.LikedScreen"
+        android:label="fragment_liked"
+        tools:layout="@layout/fragment_liked" />
+    <fragment
+        android:id="@+id/accountScreen"
+        android:name="com.hiteshchopra.instagramclone.ui.home.fragment.AccountScreen"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account_screen" />
+</navigation>

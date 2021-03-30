@@ -18,6 +18,22 @@
         <entry key="..\:/Users/hites/AndroidStudioProjects/MM/InstagramClone/app/src/main/res/layout/log_in_divider.xml" value="0.192578125" />
         <entry key="..\:/Users/hites/AndroidStudioProjects/MM/InstagramClone/app/src/main/res/layout/login_activity.xml" value="0.1" />
         <entry key="..\:/Users/hites/AndroidStudioProjects/MM/InstagramClone/app/src/main/res/layout/sign_up_divider.xml" value="0.192578125" />
+        <entry key="..\:/Users/hites/AndroidStudioProjects/MM/project/instagram-clone/app/src/main/res/drawable/edit_text_border.xml" value="0.23981481481481481" />
+        <entry key="..\:/Users/hites/AndroidStudioProjects/MM/project/instagram-clone/app/src/main/res/drawable/ic_baseline_like.xml" value="0.23981481481481481" />
+        <entry key="..\:/Users/hites/AndroidStudioProjects/MM/project/instagram-clone/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.23981481481481481" />
+        <entry key="..\:/Users/hites/AndroidStudioProjects/MM/project/instagram-clone/app/src/main/res/drawable/ic_baseline_user.xml" value="0.23981481481481481" />
+        <entry key="..\:/Users/hites/AndroidStudioProjects/MM/project/instagram-clone/app/src/main/res/drawable/ic_instagram_reels.xml" value="0.23981481481481481" />
+        <entry key="..\:/Users/hites/AndroidStudioProjects/MM/project/instagram-clone/app/src/main/res/layout/activity_home.xml" value="0.264" />
+        <entry key="..\:/Users/hites/AndroidStudioProjects/MM/project/instagram-clone/app/src/main/res/layout/activity_login.xml" value="0.25677083333333334" />
+        <entry key="..\:/Users/hites/AndroidStudioProjects/MM/project/instagram-clone/app/src/main/res/layout/activity_sign_up.xml" value="0.25677083333333334" />
+        <entry key="..\:/Users/hites/AndroidStudioProjects/MM/project/instagram-clone/app/src/main/res/layout/fragment_account_screen.xml" value="0.1" />
+        <entry key="..\:/Users/hites/AndroidStudioProjects/MM/project/instagram-clone/app/src/main/res/layout/fragment_home_screen.xml" value="0.264" />
+        <entry key="..\:/Users/hites/AndroidStudioProjects/MM/project/instagram-clone/app/src/main/res/layout/fragment_liked.xml" value="0.1" />
+        <entry key="..\:/Users/hites/AndroidStudioProjects/MM/project/instagram-clone/app/src/main/res/layout/layout_divider.xml" value="0.25677083333333334" />
+        <entry key="..\:/Users/hites/AndroidStudioProjects/MM/project/instagram-clone/app/src/main/res/layout/layout_username_password.xml" value="0.25677083333333334" />
+        <entry key="..\:/Users/hites/AndroidStudioProjects/MM/project/instagram-clone/app/src/main/res/layout/post_item.xml" value="0.2" />
+        <entry key="..\:/Users/hites/AndroidStudioProjects/MM/project/instagram-clone/app/src/main/res/layout/test.xml" value="0.264" />
+        <entry key="..\:/Users/hites/AndroidStudioProjects/MM/project/instagram-clone/app/src/main/res/menu/bottom_navigation.xml" value="0.264" />
       </map>
     </option>
   </component>

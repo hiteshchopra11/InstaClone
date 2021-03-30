@@ -1,10 +1,9 @@
 package com.hiteshchopra.instagramclone.ui.signup
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.hiteshchopra.data.SafeResult
+import com.hiteshchopra.data.FirebaseSafeResult
 import com.hiteshchopra.domain.model.User
 import com.hiteshchopra.domain.usecase.UseCaseFirebaseSignUp
 import com.hiteshchopra.instagramclone.ui.base.BaseVM
@@ -43,10 +42,10 @@ class SignUpVM @Inject constructor(
         _signUpState.value = SignUpViewState.Loading
         viewModelScope.launch {
             when (val result = useCaseFirebaseSignUp.perform(user)) {
-                is SafeResult.Success -> {
+                is FirebaseSafeResult.Success -> {
                     _signUpState.value = SignUpViewState.Success
                 }
-                is SafeResult.Failure -> {
+                is FirebaseSafeResult.Failure -> {
                     _signUpState.value = SignUpViewState.Error(result.exception)
                 }
             }

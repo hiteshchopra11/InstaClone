@@ -9,14 +9,18 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.hiteshchopra.data.listener.FirebaseListener
+import com.hiteshchopra.data.repository.CFirebaseRepository
 import com.hiteshchopra.data.repository.NewFirebaseRepository
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
-import io.mockk.every
+import io.mockk.impl.annotations.MockK
 import io.mockk.impl.annotations.RelaxedMockK
+import io.mockk.impl.annotations.SpyK
+import io.mockk.mockk
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -28,14 +32,16 @@ class RepositoryTest : FirebaseListener {
     @get:Rule
     val testInstantTaskExecutorRule: TestRule = InstantTaskExecutorRule()
 
-    lateinit var newFirebaseRepository: NewFirebaseRepository
+    private lateinit var newFirebaseRepository: NewFirebaseRepository
+    private lateinit var dispatcher: CoroutineDispatcher
 
-    lateinit var dispatcher: CoroutineDispatcher
+    private lateinit var cFirebaseRepository: CFirebaseRepository
+
 
     private lateinit var successTask: Task<AuthResult>
     private lateinit var failureTask: Task<AuthResult>
 
-    @RelaxedMockK
+    @MockK
     private lateinit var mAuth: FirebaseAuth
 
     private var logInResult: Int = UNDEF
@@ -53,8 +59,9 @@ class RepositoryTest : FirebaseListener {
         MockKAnnotations.init(this)
         successTask = getSuccessAuthResultListener()
         failureTask = getFailureAuthResultListener()
-        dispatcher = Dispatchers.IO
+        dispatcher = Dispatchers.Unconfined
         newFirebaseRepository = NewFirebaseRepository(mAuth, dispatcher, this)
+        cFirebaseRepository = CFirebaseRepository(mAuth, dispatcher, this)
         logInResult = UNDEF
         signUpResult = UNDEF
     }
@@ -92,11 +99,11 @@ class RepositoryTest : FirebaseListener {
         ): Task<AuthResult> = null!!
 
         override fun addOnCompleteListener(
-            executor: Executor,
             onCompleteListener: OnCompleteListener<AuthResult>
         ): Task<AuthResult> {
-            onCompleteListener.onComplete(successTask)
-            return successTask
+//            onCompleteListener.onComplete(successTask)
+//            return successTask
+            return null!!
         }
     }
 
@@ -133,7 +140,6 @@ class RepositoryTest : FirebaseListener {
         ): Task<AuthResult> = null!!
 
         override fun addOnCompleteListener(
-            executor: Executor,
             onCompleteListener: OnCompleteListener<AuthResult>
         ): Task<AuthResult> {
             onCompleteListener.onComplete(failureTask)
@@ -145,18 +151,22 @@ class RepositoryTest : FirebaseListener {
     fun signUpSuccess_test() {
         val email = "kwggdekes@gmail.com"
         val password = "hjhswgswhsw"
-        every { mAuth.createUserWithEmailAndPassword(email, password) }.returns(successTask)
-        newFirebaseRepository.signUp(email, password)
-        assert(signUpResult == 1)
+        runBlocking {
+            coEvery { mAuth.createUserWithEmailAndPassword(email, password) }.returns(successTask)
+            cFirebaseRepository.signUp(email, password)
+            assert(signUpResult == 1)
+        }
     }
 
     @Test
     fun signUpFail_test() {
         val email = "dfsgsgSgs"
         val password = "hjhswgswhsw"
-        every { mAuth.createUserWithEmailAndPassword(email, password) }.returns(failureTask)
-        newFirebaseRepository.signUp(email, password)
-        assert(signUpResult == -1)
+        runBlocking {
+            coEvery { mAuth.createUserWithEmailAndPassword(email, password) }.returns(failureTask)
+            cFirebaseRepository.signUp(email, password)
+            assert(signUpResult == -1)
+        }
     }
 
     override fun signUpSuccess(email: String, password: String) {

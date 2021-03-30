@@ -131,6 +131,7 @@ object Lib {
         const val HILT_ANDROID = "com.google.dagger:hilt-android:$HILT_VERSION"
         const val HILT_COMPILER = "com.google.dagger:hilt-compiler:$HILT_VERSION"
     }
+
 }
 
 object TestLib {
@@ -141,8 +142,6 @@ object TestLib {
     private const val MOCK_WEB_SERVER_VERSION = "4.7.2"
     private const val CORE_TEST_VERSION = "1.2.0"
     private const val JUNIT_VERSION = "4.13"
-
-
 
 
     private const val MOCKK_VERSION = "1.9.3"
