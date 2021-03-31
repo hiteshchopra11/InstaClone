@@ -9,14 +9,11 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.hiteshchopra.data.listener.FirebaseListener
-import com.hiteshchopra.data.repository.CFirebaseRepository
-import com.hiteshchopra.data.repository.NewFirebaseRepository
+import com.hiteshchopra.data.repository.firebase.CFirebaseRepository
+import com.hiteshchopra.data.repository.firebase.NewFirebaseRepository
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
-import io.mockk.impl.annotations.RelaxedMockK
-import io.mockk.impl.annotations.SpyK
-import io.mockk.mockk
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

@@ -1,10 +1,8 @@
 package com.hiteshchopra.instagramclone.injection.module
 
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.hiteshchopra.data.listener.FirebaseListener
-import com.hiteshchopra.data.repository.FirebaseRepo
-import com.hiteshchopra.data.repository.NewFirebaseRepository
+import com.hiteshchopra.data.repository.firebase.FirebaseRepo
 import com.hiteshchopra.instagramclone.repository.RepositoryTest
 import dagger.Module
 import dagger.Provides

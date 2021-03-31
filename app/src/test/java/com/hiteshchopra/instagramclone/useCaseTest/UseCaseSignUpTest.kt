@@ -3,7 +3,7 @@ package com.hiteshchopra.instagramclone.useCaseTest
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.firebase.auth.FirebaseUser
 import com.hiteshchopra.data.FirebaseSafeResult
-import com.hiteshchopra.data.repository.FirebaseRepo
+import com.hiteshchopra.data.repository.firebase.FirebaseRepo
 import com.hiteshchopra.domain.model.User
 import com.hiteshchopra.domain.usecase.UseCaseFirebaseSignUp
 import com.hiteshchopra.instagramclone.BaseTest

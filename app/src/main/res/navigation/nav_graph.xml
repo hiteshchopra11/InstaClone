@@ -6,7 +6,7 @@
     app:startDestination="@id/homeScreen">
     <fragment
         android:id="@+id/homeScreen"
-        android:name="com.hiteshchopra.instagramclone.ui.home.fragment.HomeScreen"
+        android:name="com.hiteshchopra.instagramclone.ui.home.fragment.home.HomeScreen"
         android:label="fragment_home_screen"
         tools:layout="@layout/fragment_home_screen" />
     <fragment

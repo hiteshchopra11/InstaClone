@@ -2,7 +2,7 @@ package com.hiteshchopra.instagramclone.injection.module
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.hiteshchopra.data.repository.FirebaseRepo
+import com.hiteshchopra.data.repository.firebase.FirebaseRepo
 import dagger.Module
 import dagger.Provides
 import io.mockk.mockk

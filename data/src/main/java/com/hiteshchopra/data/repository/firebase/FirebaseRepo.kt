@@ -1,4 +1,4 @@
-package com.hiteshchopra.data.repository
+package com.hiteshchopra.data.repository.firebase
 
 import com.google.firebase.auth.FirebaseUser
 import com.hiteshchopra.data.FirebaseSafeResult

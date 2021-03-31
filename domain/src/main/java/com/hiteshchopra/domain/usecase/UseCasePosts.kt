@@ -1,7 +1,7 @@
 package com.hiteshchopra.domain.usecase
 
 import com.hiteshchopra.data.ApiSafeResult
-import com.hiteshchopra.data.repository.PostsRepo
+import com.hiteshchopra.data.repository.posts.PostsRepo
 import com.hiteshchopra.domain.mapper.toPosts
 import com.hiteshchopra.domain.model.Post
 import com.hiteshchopra.domain.model.User

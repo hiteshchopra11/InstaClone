@@ -1,4 +1,4 @@
-package com.hiteshchopra.data.repository
+package com.hiteshchopra.data.repository.posts
 
 import com.hiteshchopra.data.ApiSafeResult
 import com.hiteshchopra.data.remote.posts.model.PostList
