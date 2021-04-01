@@ -1,30 +1,33 @@
 package com.hiteshchopra.instagramclone.ui.base
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import dagger.android.support.DaggerAppCompatActivity
+import com.hiteshchopra.instagramclone.BR
+import dagger.android.support.AndroidSupportInjection
+import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-abstract class BaseActivity<B : ViewDataBinding, VM : ViewModel> : DaggerAppCompatActivity() {
+abstract class BaseFragment<B : ViewDataBinding, VM : ViewModel> : DaggerFragment() {
     protected lateinit var binding: B
     lateinit var viewModel: VM
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        bindContentView(layoutId())
-    }
-
-    private fun bindContentView(layoutId: Int) {
-        binding = DataBindingUtil.setContentView(this, layoutId)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = DataBindingUtil.inflate(inflater, layoutId(), container, false)
         viewModel = ViewModelProvider(this, viewModelFactory).get(getViewModelClass())
-        binding.setVariable(1, viewModel)
+        return binding.root
     }
 
     abstract fun getViewModelClass(): Class<VM>

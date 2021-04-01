@@ -1,27 +1,26 @@
 package com.hiteshchopra.instagramclone.ui.home
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.hiteshchopra.instagramclone.R
 import com.hiteshchopra.instagramclone.databinding.ActivityHomeBinding
+import com.hiteshchopra.instagramclone.ui.base.BaseActivity
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity<ActivityHomeBinding, HomeVM>() {
 
-    private lateinit var activityHomeBinding: ActivityHomeBinding
+    override fun getViewModelClass(): Class<HomeVM> = HomeVM::class.java
+    override fun layoutId(): Int = R.layout.activity_home
+
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var navController: NavController
-    private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var appBarConfiguration: AppBarConfiguration
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
-
         // try catch block to hide Action bar
         try {
             this.supportActionBar!!.hide()
@@ -30,13 +29,8 @@ class HomeActivity : AppCompatActivity() {
         setupNavigationComponents()
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finishActivity(1)
-    }
 
     private fun setupNavigationComponents() {
-        bottomNavigationView = findViewById(R.id.bottomNavigationView)
         navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
@@ -53,6 +47,14 @@ class HomeActivity : AppCompatActivity() {
             )
 
         setupActionBarWithNavController(navController, appBarConfiguration)
-        bottomNavigationView.setupWithNavController(navController)
+        binding.bottomNavigationView.setupWithNavController(navController)
     }
+
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finishActivity(1)
+    }
+
 }
+

@@ -72,6 +72,7 @@ dependencies {
     implementation(Lib.Android.FRAGMENT)
     implementation(Lib.Android.MATERIAL_DESIGN)
     implementation(Lib.Android.LIFECYCLE_VIEWMODEL_KTX)
+    implementation(Lib.Android.APPCOMPAT)
 
     /* DI */
     implementation(Lib.Di.DAGGER)

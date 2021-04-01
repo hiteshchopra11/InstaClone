@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.hiteshchopra.instagramclone.R
 
-class AccountScreen : Fragment() {
 
+class LikedFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_account_screen, container, false)
+
+        return inflater.inflate(R.layout.fragment_liked, container, false)
     }
 }

@@ -47,6 +47,8 @@ object Lib {
             "androidx.lifecycle:lifecycle-viewmodel-ktx:${LIFECYCLE_VIEWMODEL_KTX_VERSION}"
         const val FRAGMENT =
             "androidx.fragment:fragment-ktx:${FRAGMENT_VERSION}"
+        const val APPCOMPAT=
+            "androidx.appcompat:appcompat:1.2.0"
     }
 
     object Database {

@@ -9,11 +9,11 @@ import com.hiteshchopra.instagramclone.ui.base.ActivityNavigator
 import com.hiteshchopra.instagramclone.ui.base.BaseActivity
 import com.hiteshchopra.instagramclone.ui.home.HomeActivity
 import com.hiteshchopra.instagramclone.ui.signup.SignUpActivity
-import com.hiteshchopra.instagramclone.utils.Toast.emptyEmailToast
-import com.hiteshchopra.instagramclone.utils.Toast.emptyPasswordToast
-import com.hiteshchopra.instagramclone.utils.Toast.invalidEmailToast
-import com.hiteshchopra.instagramclone.utils.Toast.shortPasswordToast
-import com.hiteshchopra.instagramclone.utils.Toast.toastMessage
+import com.hiteshchopra.instagramclone.utils.emptyEmailToast
+import com.hiteshchopra.instagramclone.utils.emptyPasswordToast
+import com.hiteshchopra.instagramclone.utils.invalidEmailToast
+import com.hiteshchopra.instagramclone.utils.shortPasswordToast
+import com.hiteshchopra.instagramclone.utils.toastMessage
 
 
 class LoginActivity : BaseActivity<ActivityLoginBinding, LoginVM>() {

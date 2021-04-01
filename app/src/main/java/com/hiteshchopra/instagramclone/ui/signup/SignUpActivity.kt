@@ -8,11 +8,11 @@ import com.hiteshchopra.instagramclone.databinding.ActivitySignUpBinding
 import com.hiteshchopra.instagramclone.ui.base.ActivityNavigator
 import com.hiteshchopra.instagramclone.ui.base.BaseActivity
 import com.hiteshchopra.instagramclone.ui.login.LoginActivity
-import com.hiteshchopra.instagramclone.utils.Toast.emptyEmailToast
-import com.hiteshchopra.instagramclone.utils.Toast.emptyPasswordToast
-import com.hiteshchopra.instagramclone.utils.Toast.invalidEmailToast
-import com.hiteshchopra.instagramclone.utils.Toast.shortPasswordToast
-import com.hiteshchopra.instagramclone.utils.Toast.toastMessage
+import com.hiteshchopra.instagramclone.utils.emptyEmailToast
+import com.hiteshchopra.instagramclone.utils.emptyPasswordToast
+import com.hiteshchopra.instagramclone.utils.invalidEmailToast
+import com.hiteshchopra.instagramclone.utils.shortPasswordToast
+import com.hiteshchopra.instagramclone.utils.toastMessage
 
 class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpVM>() {
     override fun getViewModelClass(): Class<SignUpVM> = SignUpVM::class.java

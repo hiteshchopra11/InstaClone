@@ -27,4 +27,14 @@
     <string name="account">Account</string>
     <string name="post_image">Post Image</string>
     <string name="profile_pic_round">Profile Pic Round</string>
+    <string name="likes_image">Likes Image</string>
+    <string name="likes_count">56</string>
+    <string name="comments_image">Comments Image</string>
+    <string name="_12">12</string>
+    <string name="insta_id">hiteshchopra11</string>
+    <string name="search_screen">Search Screen</string>
+    <string name="reels_screen">Reels Screen</string>
+    <string name="account_screen">Account Screen</string>
+    <string name="liked_screen">Liked Screen</string>
+    <string name="network_error">Network Error occurred</string>
 </resources>
