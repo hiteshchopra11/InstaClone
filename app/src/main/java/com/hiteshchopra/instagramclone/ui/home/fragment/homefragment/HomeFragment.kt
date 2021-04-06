@@ -25,7 +25,7 @@ class HomeFragment : BaseFragment<FragmentHomeScreenBinding, HomeScreenVM>() {
     }
 
     private fun addObservers() {
-        viewModel.postsState.observe(viewLifecycleOwner, Observer { state ->
+        viewModel.postsState.observe(viewLifecycleOwner, { state ->
             when (state) {
                 is PostsState.Loading -> {
                     handleDataLoadingUi(true)
@@ -40,7 +40,7 @@ class HomeFragment : BaseFragment<FragmentHomeScreenBinding, HomeScreenVM>() {
             }
         })
 
-        viewModel.storiesState.observe(viewLifecycleOwner, Observer { state ->
+        viewModel.storiesState.observe(viewLifecycleOwner, { state ->
             when (state) {
                 is StoriesState.Loading -> {
                     handleDataLoadingUi(true)

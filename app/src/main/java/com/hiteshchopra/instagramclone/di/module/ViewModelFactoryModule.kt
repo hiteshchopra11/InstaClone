@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.hiteshchopra.instagramclone.di.scope.ViewModelKey
 import com.hiteshchopra.instagramclone.ui.home.HomeVM
 import com.hiteshchopra.instagramclone.ui.home.fragment.homefragment.HomeScreenVM
+import com.hiteshchopra.instagramclone.ui.home.fragment.searchfragment.SearchFragment
+import com.hiteshchopra.instagramclone.ui.home.fragment.searchfragment.SearchFragmentVM
 import com.hiteshchopra.instagramclone.ui.login.LoginVM
 import com.hiteshchopra.instagramclone.ui.signup.SignUpVM
 import com.hiteshchopra.instagramclone.utils.ViewModelFactory
@@ -32,9 +34,13 @@ abstract class ViewModelFactoryModule {
     @ViewModelKey(HomeVM::class)
     abstract fun bindHomeVM(homeScreenVM: HomeVM): ViewModel
 
-
     @Binds
     @IntoMap
     @ViewModelKey(HomeScreenVM::class)
     abstract fun bindHomeScreenVM(homeScreenVM: HomeScreenVM): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SearchFragmentVM::class)
+    abstract fun bindSearchFragmentVM(searchScreenVM: SearchFragmentVM): ViewModel
 }

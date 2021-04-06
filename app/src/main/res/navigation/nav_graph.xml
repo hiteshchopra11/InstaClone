@@ -11,7 +11,7 @@
         tools:layout="@layout/fragment_home_screen" />
     <fragment
         android:id="@+id/searchScreen"
-        android:name="com.hiteshchopra.instagramclone.ui.home.fragment.SearchFragment"
+        android:name="com.hiteshchopra.instagramclone.ui.home.fragment.searchfragment.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
     <fragment

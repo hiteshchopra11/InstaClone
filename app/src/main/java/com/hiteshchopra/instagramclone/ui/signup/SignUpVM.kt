@@ -20,7 +20,7 @@ class SignUpVM @Inject constructor(
     val signUpState: LiveData<SignUpViewState> = _signUpState
 
     private var _validateState: MutableLiveData<SignUpValidateState> = MutableLiveData()
-    val validateState: LiveData<SignUpValidateState> = _validateState
+    var validateState: LiveData<SignUpValidateState> = _validateState
 
     fun validateEmailPassword(email: String, password: String) {
         when {

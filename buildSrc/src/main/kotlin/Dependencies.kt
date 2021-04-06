@@ -1,13 +1,15 @@
+
+
 /** This file contains versions of all the dependencies used in the module  */
 
 object BuildPlugins {
-    private const val TOOLS_BUILD = "4.0.0"
+    private const val TOOLS_BUILD_GHRADLE = "7.0.0-alpha08"
     private const val KT_LINT = "9.2.1"
     private const val SAFE_ARGS = "2.3.0"
     private const val GOOGLE_SERVICE_VERSION = "4.3.3"
     private const val HILT_VERSION = "2.33-beta"
     const val TOOLS_BUILD_GRADLE =
-        "com.android.tools.build:gradle:${TOOLS_BUILD}"
+        "com.android.tools.build:gradle:${TOOLS_BUILD_GHRADLE}"
     const val KTLINT_GRADLE_PLUGIN =
         "org.jlleitschuh.gradle:ktlint-gradle:${KT_LINT}"
     const val SAFE_ARGS_GRADLE_PLUGIN =
@@ -47,7 +49,7 @@ object Lib {
             "androidx.lifecycle:lifecycle-viewmodel-ktx:${LIFECYCLE_VIEWMODEL_KTX_VERSION}"
         const val FRAGMENT =
             "androidx.fragment:fragment-ktx:${FRAGMENT_VERSION}"
-        const val APPCOMPAT=
+        const val APPCOMPAT =
             "androidx.appcompat:appcompat:1.2.0"
     }
 
@@ -138,14 +140,13 @@ object Lib {
 
 object TestLib {
     private const val COROUTINES_VERSION = "1.3.7"
-    private const val ANDROID_JUNIT_VERSION = "1.0.0"
+    private const val ANDROID_JUNIT_VERSION = "1.1.2"
     private const val ROBO_ELECTRIC_VERSION = "4.3"
     private const val ARCH_CORE_VERSION = "2.1.0"
     private const val MOCK_WEB_SERVER_VERSION = "4.7.2"
-    private const val CORE_TEST_VERSION = "1.2.0"
-    private const val JUNIT_VERSION = "4.13"
-
-
+    private const val CORE_TEST_VERSION = "1.3.0"
+    private const val JUNIT_VERSION = "4.13.2"
+    private const val ESPRESSO_VERSION = "3.3.0"
     private const val MOCKK_VERSION = "1.9.3"
 
     const val COROUTINES =
@@ -155,10 +156,41 @@ object TestLib {
         "com.squareup.okhttp3:mockwebserver:${MOCK_WEB_SERVER_VERSION}"
     const val CORE_TEST = "androidx.test:core-ktx:${CORE_TEST_VERSION}"
     const val JUNIT = "junit:junit:${JUNIT_VERSION}"
-    const val ANDROID_JUNIT = "androidx.test.ext:junit:${ANDROID_JUNIT_VERSION}"
-    const val ARCH_CORE = "androidx.arch.core:core-testing:${ARCH_CORE_VERSION}"
-    const val MOCKITO_CORE = "org.mockito:mockito-core:3.3.3"
+    const val ANDROID_JUNIT_KTX = "androidx.test.ext:junit:${ANDROID_JUNIT_VERSION}"
+    const val ANDROID_JUNIT = "androidx.test.ext:junit-ktx:${ANDROID_JUNIT_VERSION}"
     const val MOCKK = "io.mockk:mockk:$MOCKK_VERSION"
+    const val ESPRESSOO = "androidx.test.espresso:espresso-core$ESPRESSO_VERSION"
+    const val ARCH_CORE = "androidx.arch.core:core-testing:${ARCH_CORE_VERSION}"
+}
+
+object AndroidTestLib {
+
+    // Espresso
+    private const val ESPRESSO_VERSION = "3.1.0"
+    const val ESPRESSO_CONTRIB = "androidx.test.espresso:espresso-contrib:$ESPRESSO_VERSION"
+    const val ESPRESSO_IDLING_RESOURCE =
+        "androidx.test.espresso:espresso-idling-resource:$ESPRESSO_VERSION" //use implementation
+    const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:$ESPRESSO_VERSION"
+    const val ESPRESSO_INTENTS = "androidx.test.espresso:espresso-intents:3.1.0"
+
+
+    // androidx.test
+    private const val ANDROIDX_TEST = "1.1.0"
+    const val RUNNER = "androidx.test:runner:$ANDROIDX_TEST"
+    const val RULES = "androidx.test:rules:1.2.0"
+    const val CORE = "androidx.test:core:$ANDROIDX_TEST"
+    const val EXT_JUNIT = "androidx.test.ext:junit:$ANDROIDX_TEST"
+
+    const val CORE_VERSION = "androidx.test:core-ktx:$ANDROIDX_TEST"
+    const val EXT_JUNIT_VERSION = "androidx.test.ext:junit-ktx:$ANDROIDX_TEST"
+
+    const val JUNIT = "junit:junit:4.13.2"
+    const val MOCKK = "io.mockk:mockk-android:1.10.0"
+
+    // androidx.fragment
+    private const val FRAGMENT_TEST_VERSION = "1.2.5"
+    const val FRAGMENT_TESTING =
+        "androidx.fragment:fragment-testing:$FRAGMENT_TEST_VERSION" //use debugImplementation
 }
 
 object DebugLib {

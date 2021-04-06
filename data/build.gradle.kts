@@ -13,14 +13,20 @@ android {
         targetSdkVersion(ProjectProperties.TARGET_SDK)
         versionCode = 1
         versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField(
+            "String",
+            "SEARCH_API_KEY",
+            "\"Sa9aP1DcSz-H54LAn6S1kvySZuNmgLEVywSUtUe0LDA\""
+        )
     }
 
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 }
@@ -51,4 +57,14 @@ dependencies {
 
     /* Testing */
     testImplementation(TestLib.MOCKK)
+    androidTestImplementation(TestLib.JUNIT)
+    androidTestImplementation(TestLib.CORE_TEST)
+    androidTestImplementation(TestLib.ANDROID_JUNIT)
+    androidTestImplementation(TestLib.MOCK_WEB_SERVER)
+    androidTestImplementation(TestLib.ROBO_ELECTRIC)
+    androidTestImplementation(TestLib.COROUTINES)
+    androidTestImplementation(TestLib.MOCKK)
+    androidTestImplementation(TestLib.ANDROID_JUNIT_KTX)
+    androidTestImplementation(TestLib.ESPRESSOO)
+
 }

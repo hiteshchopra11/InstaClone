@@ -24,7 +24,7 @@ android {
         targetSdkVersion(ProjectProperties.TARGET_SDK)
         versionCode = 1
         versionName = "1.0"
-        testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled = true
     }
@@ -51,6 +51,11 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    // Gradle automatically adds 'android.test.runner' as a dependency.
+    useLibrary("android.test.runner")
+    useLibrary("android.test.base")
+    useLibrary("android.test.mock")
 }
 
 // Required for annotation processing plugins like Dagger
@@ -81,6 +86,7 @@ dependencies {
     implementation("com.google.android.material:material:1.3.0")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.0")
     kapt(Lib.Di.DAGGER_PROCESSOR)
     kapt(Lib.Di.DAGGER_COMPILER)
     kaptTest(Lib.Di.DAGGER_COMPILER)
@@ -111,13 +117,29 @@ dependencies {
     /* Coroutines Play Service */
     implementation(Lib.CoroutinesPlayService.COROUTINES_PLAY_SERVICE)
 
-    /* Testing */
+    /* Unit Testing */
     testImplementation(TestLib.JUNIT)
     testImplementation(TestLib.CORE_TEST)
     testImplementation(TestLib.ANDROID_JUNIT)
-    testImplementation(TestLib.ARCH_CORE)
     testImplementation(TestLib.MOCK_WEB_SERVER)
     testImplementation(TestLib.ROBO_ELECTRIC)
     testImplementation(TestLib.COROUTINES)
     testImplementation(TestLib.MOCKK)
+    testImplementation(TestLib.ANDROID_JUNIT_KTX)
+    testImplementation(TestLib.ESPRESSOO)
+
+    /* Android UI Testing */
+    implementation(AndroidTestLib.CORE)
+    androidTestImplementation(AndroidTestLib.JUNIT)
+    androidTestImplementation(AndroidTestLib.EXT_JUNIT)
+    androidTestImplementation(AndroidTestLib.ESPRESSO_CORE)
+    androidTestImplementation(AndroidTestLib.ESPRESSO_CONTRIB)
+    implementation(AndroidTestLib.FRAGMENT_TESTING)
+    androidTestImplementation(AndroidTestLib.MOCKK)
+    androidTestImplementation(AndroidTestLib.RUNNER)
+    androidTestImplementation(AndroidTestLib.RULES)
+    implementation(AndroidTestLib.ESPRESSO_IDLING_RESOURCE)
+    androidTestImplementation(AndroidTestLib.ESPRESSO_INTENTS)
+    androidTestImplementation(AndroidTestLib.CORE_VERSION)
+    androidTestImplementation(AndroidTestLib.EXT_JUNIT_VERSION)
 }

@@ -5,10 +5,10 @@ import com.hiteshchopra.data.remote.stories.model.StoriesList
 import retrofit2.Retrofit
 import retrofit2.http.GET
 
-interface ApiService {
+interface HomeApiService {
     companion object {
-        fun createRetrofitService(retrofit: Retrofit): ApiService {
-            return retrofit.create(ApiService::class.java)
+        fun createRetrofitService(retrofit: Retrofit): HomeApiService {
+            return retrofit.create(HomeApiService::class.java)
         }
     }
 

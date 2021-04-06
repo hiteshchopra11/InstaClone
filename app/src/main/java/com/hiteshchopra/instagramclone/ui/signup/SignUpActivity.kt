@@ -3,6 +3,7 @@ package com.hiteshchopra.instagramclone.ui.signup
 import android.content.Intent
 import android.os.Bundle
 import androidx.core.view.isVisible
+import com.google.android.material.snackbar.Snackbar
 import com.hiteshchopra.instagramclone.R
 import com.hiteshchopra.instagramclone.databinding.ActivitySignUpBinding
 import com.hiteshchopra.instagramclone.ui.base.ActivityNavigator
@@ -15,6 +16,7 @@ import com.hiteshchopra.instagramclone.utils.shortPasswordToast
 import com.hiteshchopra.instagramclone.utils.toastMessage
 
 class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpVM>() {
+
     override fun getViewModelClass(): Class<SignUpVM> = SignUpVM::class.java
     override fun layoutId(): Int = R.layout.activity_sign_up
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,9 +51,9 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpVM>() {
                 is SignUpValidateState.EmptyPassword ->
                     emptyPasswordToast()
                 is SignUpValidateState.InvalidEmail ->
-                   invalidEmailToast()
+                    invalidEmailToast()
                 is SignUpValidateState.ShortPassword ->
-                   shortPasswordToast()
+                    shortPasswordToast()
                 is SignUpValidateState.Valid -> {
                     viewModel.firebaseSignUp(email, password)
                     firebaseSignUpResult()
@@ -73,6 +75,11 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpVM>() {
                 }
                 is SignUpViewState.Error -> {
                     handleDataLoadingUi(false)
+                    Snackbar.make(
+                        binding.viewSignUpActivity,
+                        "Error Occurred",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
                     toastMessage(signUpState.error?.message.toString())
                 }
             }
@@ -91,5 +98,9 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpVM>() {
             R.anim.slide_right_out,
             this
         )
+        val intent = Intent(this@SignUpActivity, LoginActivity::class.java)
+        overridePendingTransition(0, 0)
+        intent.flags = Intent.FLAG_ACTIVITY_NO_ANIMATION
+        startActivity(intent)
     }
 }

@@ -1,6 +1,7 @@
 package com.hiteshchopra.data.remote
 
 import com.hiteshchopra.data.BuildConfig
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -18,9 +19,16 @@ object RetrofitHelper {
         }
     }
 
-    fun createOkHttpClient(): OkHttpClient {
+    fun createHomeOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(okHttpLoggingInterceptor)
+            .retryOnConnectionFailure(true)
+            .build()
+    }
+
+    fun createSearchOkHttpClient(): OkHttpClient {
+        return OkHttpClient.Builder()
+            .addInterceptor(AuthInterceptor())
             .retryOnConnectionFailure(true)
             .build()
     }

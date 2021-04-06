@@ -2,10 +2,12 @@ package com.hiteshchopra.domain.injection
 
 import com.hiteshchopra.data.repository.firebase.FirebaseRepo
 import com.hiteshchopra.data.repository.posts.PostsRepo
+import com.hiteshchopra.data.repository.search.SearchRepo
 import com.hiteshchopra.data.repository.stories.StoriesRepo
 import com.hiteshchopra.domain.usecase.UseCaseFirebaseLogin
 import com.hiteshchopra.domain.usecase.UseCaseFirebaseSignUp
 import com.hiteshchopra.domain.usecase.UseCasePosts
+import com.hiteshchopra.domain.usecase.UseCaseSearch
 import com.hiteshchopra.domain.usecase.UseCaseStories
 import dagger.Module
 import dagger.Provides
@@ -39,5 +41,12 @@ object UseCaseModule {
     @JvmStatic
     fun provideStoriesUseCase(repo: StoriesRepo): UseCaseStories {
         return UseCaseStories(storiesRepo = repo)
+    }
+
+    @Provides
+    @Singleton
+    @JvmStatic
+    fun provideSearchUseCase(repo: SearchRepo): UseCaseSearch {
+        return UseCaseSearch(repo)
     }
 }

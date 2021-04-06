@@ -46,4 +46,13 @@ dependencies {
 
     /* Testing */
     testImplementation(TestLib.MOCKK)
+    androidTestImplementation(TestLib.JUNIT)
+    androidTestImplementation(TestLib.CORE_TEST)
+    androidTestImplementation(TestLib.ANDROID_JUNIT)
+    androidTestImplementation(TestLib.MOCK_WEB_SERVER)
+    androidTestImplementation(TestLib.ROBO_ELECTRIC)
+    androidTestImplementation(TestLib.COROUTINES)
+    androidTestImplementation(TestLib.MOCKK)
+    androidTestImplementation(TestLib.ANDROID_JUNIT_KTX)
+    androidTestImplementation(TestLib.ESPRESSOO)
 }
