@@ -34,4 +34,5 @@ abstract class BaseFragment<B : ViewDataBinding, VM : ViewModel> : DaggerFragmen
 
     @LayoutRes
     protected abstract fun layoutId(): Int
+
 }

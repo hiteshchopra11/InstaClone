@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hiteshchopra.domain.model.Image
 import com.hiteshchopra.instagramclone.databinding.SearchItemBinding
 
-class ImageAdapter(
-    private val list: List<Image>,
-) :
+class ImageAdapter(private val list: List<Image>) :
     RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
+
+    // A nested class marked as inner can access the members of its outer class.
+    // Inner classes carry a reference to an object of an outer class:
 
     inner class ViewHolder(val binding: SearchItemBinding) :
         RecyclerView.ViewHolder(binding.root)

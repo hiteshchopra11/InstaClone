@@ -12,15 +12,15 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp">
+        android:layout_marginTop="@dimen/margin_16dp"
+        android:layout_marginBottom="@dimen/margin_16dp">
 
         <ImageView
             android:id="@+id/imgPost"
             android:layout_width="match_parent"
             android:scaleType="fitXY"
-            android:layout_height="300dp"
-            android:layout_marginTop="16dp"
+            android:layout_height="@dimen/post_item_height"
+            android:layout_marginTop="@dimen/margin_16dp"
             android:contentDescription="@string/post_image"
             app:image="@{post.image}"
             app:layout_constraintBottom_toBottomOf="parent"

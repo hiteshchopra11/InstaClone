@@ -15,5 +15,5 @@ interface SearchApiService {
     @GET("/search/photos")
     suspend fun searchImage(
         @Query("query") query: String,
-    ): Response<ImgList>
+    ): ImgList
 }

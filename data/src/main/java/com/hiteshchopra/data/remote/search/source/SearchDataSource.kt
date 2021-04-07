@@ -11,7 +11,7 @@ class SearchDataSource(
     private val searchApiService: SearchApiService,
     private val dispatcher: CoroutineDispatcher
 ) : ISearchDataSource {
-    override suspend fun getImages(query: String): ApiSafeResult<Response<ImgList>> {
+    override suspend fun getImages(query: String): ApiSafeResult<ImgList> {
         return safeApiCall(dispatcher) {
             searchApiService.searchImage(
                 query = query,

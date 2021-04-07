@@ -39,4 +39,7 @@
     <string name="network_error">Network Error occurred</string>
     <string name="test_result">Fail</string>
     <string name="image">Image</string>
+    <string name="please_enter_a_query_to_search">Please enter a query to search</string>
+    <string name="some_error_occurred_please_try_again_later">Some Error Occurred please try again later!</string>
+    <string name="search_image_ratio">16:9</string>
 </resources>

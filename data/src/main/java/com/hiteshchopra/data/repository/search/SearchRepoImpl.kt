@@ -8,7 +8,7 @@ import retrofit2.Response
 class SearchRepoImpl(
     private val searchDataSource: ISearchDataSource
 ) : SearchRepo {
-    override suspend fun searchImages(query: String): ApiSafeResult<Response<ImgList>> {
+    override suspend fun searchImages(query: String): ApiSafeResult<ImgList> {
         return searchDataSource.getImages(query)
     }
 }

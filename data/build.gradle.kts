@@ -66,5 +66,4 @@ dependencies {
     androidTestImplementation(TestLib.MOCKK)
     androidTestImplementation(TestLib.ANDROID_JUNIT_KTX)
     androidTestImplementation(TestLib.ESPRESSOO)
-
 }
