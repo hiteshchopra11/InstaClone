@@ -68,7 +68,7 @@ object Lib {
     }
 
     object Async {
-        private const val COROUTINES_VERSION = "1.3.7"
+        private const val COROUTINES_VERSION = "1.4.1"
 
         const val COROUTINES =
             "org.jetbrains.kotlinx:kotlinx-coroutines-core:${COROUTINES_VERSION}"
@@ -139,9 +139,9 @@ object Lib {
 }
 
 object TestLib {
-    private const val COROUTINES_VERSION = "1.3.7"
+    private const val COROUTINES_VERSION = "1.4.1"
     private const val ANDROID_JUNIT_VERSION = "1.1.2"
-    private const val ROBO_ELECTRIC_VERSION = "4.3"
+    private const val ROBO_ELECTRIC_VERSION = "4.5.1"
     private const val ARCH_CORE_VERSION = "2.1.0"
     private const val MOCK_WEB_SERVER_VERSION = "4.7.2"
     private const val CORE_TEST_VERSION = "1.3.0"
@@ -159,7 +159,7 @@ object TestLib {
     const val ANDROID_JUNIT_KTX = "androidx.test.ext:junit:${ANDROID_JUNIT_VERSION}"
     const val ANDROID_JUNIT = "androidx.test.ext:junit-ktx:${ANDROID_JUNIT_VERSION}"
     const val MOCKK = "io.mockk:mockk:$MOCKK_VERSION"
-    const val ESPRESSOO = "androidx.test.espresso:espresso-core$ESPRESSO_VERSION"
+    const val ESPRESSOO = "androidx.test.espresso:espresso-core:$ESPRESSO_VERSION"
     const val ARCH_CORE = "androidx.arch.core:core-testing:${ARCH_CORE_VERSION}"
 }
 
@@ -172,7 +172,6 @@ object AndroidTestLib {
         "androidx.test.espresso:espresso-idling-resource:$ESPRESSO_VERSION" //use implementation
     const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:$ESPRESSO_VERSION"
     const val ESPRESSO_INTENTS = "androidx.test.espresso:espresso-intents:3.1.0"
-
 
     // androidx.test
     private const val ANDROIDX_TEST = "1.1.0"

@@ -5,12 +5,11 @@ import com.hiteshchopra.data.remote.SearchApiService
 import com.hiteshchopra.data.remote.safeApiCall
 import com.hiteshchopra.data.remote.search.model.ImgList
 import kotlinx.coroutines.CoroutineDispatcher
-import retrofit2.Response
 
-class SearchDataSource(
+class SearchRemoteDataSource(
     private val searchApiService: SearchApiService,
     private val dispatcher: CoroutineDispatcher
-) : ISearchDataSource {
+) : ISearchRemoteDataSource {
     override suspend fun getImages(query: String): ApiSafeResult<ImgList> {
         return safeApiCall(dispatcher) {
             searchApiService.searchImage(

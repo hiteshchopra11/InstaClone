@@ -34,7 +34,6 @@ class RepositoryTest : FirebaseListener {
 
     private lateinit var cFirebaseRepository: CFirebaseRepository
 
-
     private lateinit var successTask: Task<AuthResult>
     private lateinit var failureTask: Task<AuthResult>
 

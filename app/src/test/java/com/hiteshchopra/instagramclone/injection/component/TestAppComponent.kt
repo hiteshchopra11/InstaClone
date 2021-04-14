@@ -1,8 +1,12 @@
 package com.hiteshchopra.instagramclone.injection.component
 
-import com.hiteshchopra.domain.injection.UseCaseModule
+
 import com.hiteshchopra.instagramclone.TestApplication
-import com.hiteshchopra.instagramclone.injection.module.TestNewRepositoryModule
+import com.hiteshchopra.instagramclone.injection.module.TestNetworkModule
+import com.hiteshchopra.instagramclone.injection.module.TestRepositoryModule
+import com.hiteshchopra.instagramclone.injection.module.TestSourcesModule
+import com.hiteshchopra.instagramclone.injection.module.TestUseCaseModule
+import com.hiteshchopra.instagramclone.useCaseTest.UseCaseSearchTest
 import com.hiteshchopra.instagramclone.useCaseTest.UseCaseSignUpTest
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -13,8 +17,10 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AndroidSupportInjectionModule::class,
-        UseCaseModule::class,
-        TestNewRepositoryModule::class
+        TestNetworkModule::class,
+        TestRepositoryModule::class,
+        TestSourcesModule::class,
+        TestUseCaseModule::class
     ]
 )
 interface TestAppComponent : AndroidInjector<TestApplication> {
@@ -23,4 +29,5 @@ interface TestAppComponent : AndroidInjector<TestApplication> {
     interface Factory : AndroidInjector.Factory<TestApplication>
 
     fun inject(useCaseTest: UseCaseSignUpTest)
+    fun inject(useCaseTest: UseCaseSearchTest)
 }

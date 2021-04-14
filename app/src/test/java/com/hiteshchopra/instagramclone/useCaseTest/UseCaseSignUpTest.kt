@@ -22,14 +22,15 @@ class UseCaseSignUpTest : BaseTest() {
     @Inject
     lateinit var mockFirebaseUser: FirebaseUser
 
-    override fun injectIntoDagger(testAppComponent: TestAppComponent) {
-        testAppComponent.inject(this)
-    }
 
     private lateinit var useCaseFirebaseSignUp: UseCaseFirebaseSignUp
     override fun setup() {
         super.setup()
         useCaseFirebaseSignUp = UseCaseFirebaseSignUp(mockRepository)
+    }
+
+    override fun injectIntoDagger(testAppComponent: TestAppComponent) {
+        testAppComponent.inject(this)
     }
 
     @get:Rule
@@ -38,7 +39,7 @@ class UseCaseSignUpTest : BaseTest() {
     @Test
     fun valid_request_returns_success() {
         runBlocking {
-            val user: User = User("valid@gmail.com", "12345678")
+            val user = User("valid@gmail.com", "12345678")
             coEvery {
                 mockRepository.firebaseSignUp(any(), any())
             } returns FirebaseSafeResult.Success(mockFirebaseUser)

@@ -87,6 +87,8 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.0")
+    implementation("androidx.room:room-runtime:2.2.6")
+    annotationProcessor("androidx.room:room-compiler:2.2.6")
     kapt(Lib.Di.DAGGER_PROCESSOR)
     kapt(Lib.Di.DAGGER_COMPILER)
     kaptTest(Lib.Di.DAGGER_COMPILER)
@@ -127,6 +129,7 @@ dependencies {
     testImplementation(TestLib.MOCKK)
     testImplementation(TestLib.ANDROID_JUNIT_KTX)
     testImplementation(TestLib.ESPRESSOO)
+    testImplementation(TestLib.ARCH_CORE)
 
     /* Android UI Testing */
     implementation(AndroidTestLib.CORE)
@@ -142,4 +145,5 @@ dependencies {
     androidTestImplementation(AndroidTestLib.ESPRESSO_INTENTS)
     androidTestImplementation(AndroidTestLib.CORE_VERSION)
     androidTestImplementation(AndroidTestLib.EXT_JUNIT_VERSION)
+    androidTestImplementation("androidx.navigation:navigation-testing:2.3.5")
 }

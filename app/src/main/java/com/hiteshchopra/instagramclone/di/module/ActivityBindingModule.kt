@@ -1,13 +1,12 @@
 package com.hiteshchopra.instagramclone.di.module
 
+import android.app.Application
 import android.content.Context
 import com.hiteshchopra.instagramclone.di.qualifier.ActivityContext
 import com.hiteshchopra.instagramclone.di.scope.ActivityScope
-import com.hiteshchopra.instagramclone.di.scope.FragmentScope
 import com.hiteshchopra.instagramclone.ui.base.BaseActivity
 import com.hiteshchopra.instagramclone.ui.home.HomeActivity
 import com.hiteshchopra.instagramclone.ui.home.HomeActivityModule
-import com.hiteshchopra.instagramclone.ui.home.fragment.homefragment.HomeFragment
 import com.hiteshchopra.instagramclone.ui.login.LoginActivity
 import com.hiteshchopra.instagramclone.ui.login.LoginActivityModule
 import com.hiteshchopra.instagramclone.ui.signup.SignUpActivity
@@ -50,5 +49,6 @@ abstract class BaseActivityModule {
 
     @Binds
     @ActivityScope
-    abstract fun provideActivity(loginActivity: BaseActivity<*, *>): DaggerAppCompatActivity
+    abstract fun provideActivity(activity: BaseActivity<*, *>): DaggerAppCompatActivity
+
 }

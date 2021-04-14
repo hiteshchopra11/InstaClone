@@ -7,6 +7,7 @@ import com.hiteshchopra.domain.injection.UseCaseModule
 import com.hiteshchopra.instagramclone.BaseApplication
 import com.hiteshchopra.instagramclone.di.module.ActivityBindingModule
 import com.hiteshchopra.instagramclone.di.module.AppModule
+import com.hiteshchopra.instagramclone.di.module.DatabaseModule
 import com.hiteshchopra.instagramclone.di.module.NetworkModule
 import com.hiteshchopra.instagramclone.di.module.ViewModelFactoryModule
 import com.hiteshchopra.instagramclone.di.qualifier.ApplicationContext
@@ -26,7 +27,8 @@ import javax.inject.Singleton
         RepoModule::class,
         UseCaseModule::class,
         NetworkModule::class,
-        SourcesModule::class
+        SourcesModule::class,
+        DatabaseModule::class
     ]
 )
 interface AppComponent : AndroidInjector<BaseApplication> {
@@ -35,7 +37,6 @@ interface AppComponent : AndroidInjector<BaseApplication> {
     abstract class Builder : AndroidInjector.Builder<BaseApplication>() {
         @BindsInstance
         abstract fun appContext(@ApplicationContext context: Context)
-
         override fun seedInstance(instance: BaseApplication?) {
             appContext(instance!!.applicationContext)
         }

@@ -49,6 +49,11 @@ dependencies {
     kapt(Lib.Di.DAGGER_PROCESSOR)
     kapt(Lib.Di.DAGGER_COMPILER)
 
+    /* Room */
+    implementation("androidx.room:room-runtime:2.3.0-rc01")
+    kapt("androidx.room:room-compiler:2.3.0-rc01")
+    implementation("androidx.room:room-ktx:2.3.0-rc01")
+
     /* Firebase Sign In */
     implementation(Lib.Firebase.FIREBASE_LOGIN)
 

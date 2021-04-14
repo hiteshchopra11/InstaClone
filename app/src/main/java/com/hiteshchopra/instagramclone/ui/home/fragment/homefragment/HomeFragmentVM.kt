@@ -5,10 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hiteshchopra.data.ApiSafeResult
-import com.hiteshchopra.domain.model.Post
+import com.hiteshchopra.data.local.entity.PostsEntity
 import com.hiteshchopra.domain.model.Stories
 import com.hiteshchopra.domain.usecase.UseCasePosts
 import com.hiteshchopra.domain.usecase.UseCaseStories
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -26,15 +27,18 @@ class HomeScreenVM @Inject constructor(
     fun loadPosts() {
         _postsState.value = PostsState.Loading
         viewModelScope.launch {
-            when (val result = useCasePosts.perform()) {
-                is ApiSafeResult.Success -> {
-                    _postsState.value = PostsState.ShowPosts(result.data)
-                }
-                is ApiSafeResult.Failure -> {
-                    _postsState.value = PostsState.Error(result.message)
-                }
-                ApiSafeResult.NetworkError -> {
-                    _postsState.value = PostsState.Error("Network Error")
+            val result = useCasePosts.perform()
+            result.collect { result ->
+                when (result) {
+                    is ApiSafeResult.Success -> {
+                        _postsState.value = PostsState.ShowPosts(result.data)
+                    }
+                    is ApiSafeResult.Failure -> {
+                        _postsState.value = PostsState.Error(result.message)
+                    }
+                    ApiSafeResult.NetworkError -> {
+                        _postsState.value = PostsState.Error("Network Error")
+                    }
                 }
             }
         }
@@ -60,7 +64,7 @@ class HomeScreenVM @Inject constructor(
 
 sealed class PostsState {
     object Loading : PostsState()
-    class ShowPosts(val posts: List<Post>) : PostsState()
+    class ShowPosts(val posts: List<PostsEntity>) : PostsState()
     class Error(val message: String) : PostsState()
 }
 

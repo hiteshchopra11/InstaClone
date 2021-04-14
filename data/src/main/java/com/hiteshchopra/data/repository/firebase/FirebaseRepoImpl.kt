@@ -7,7 +7,6 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
-// todo repo would be prefix
 
 class FirebaseRepoImpl(
     private val dispatcher: CoroutineDispatcher,

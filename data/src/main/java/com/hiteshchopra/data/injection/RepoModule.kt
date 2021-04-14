@@ -1,9 +1,9 @@
 package com.hiteshchopra.data.injection
 
 import com.google.firebase.auth.FirebaseAuth
-import com.hiteshchopra.data.remote.posts.source.IPostsDataSource
-import com.hiteshchopra.data.remote.search.source.ISearchDataSource
-import com.hiteshchopra.data.remote.search.source.SearchDataSource
+import com.hiteshchopra.data.local.PostsDB
+import com.hiteshchopra.data.remote.posts.source.IPostsRemoteDataSource
+import com.hiteshchopra.data.remote.search.source.ISearchRemoteDataSource
 import com.hiteshchopra.data.remote.stories.source.IStoriesDataSource
 import com.hiteshchopra.data.repository.firebase.FirebaseRepo
 import com.hiteshchopra.data.repository.firebase.FirebaseRepoImpl
@@ -34,9 +34,10 @@ object RepoModule {
     @Singleton
     @JvmStatic
     fun providePostRepo(
-        dataSource: IPostsDataSource
+        remoteDataSource: IPostsRemoteDataSource,
+        db: PostsDB
     ): PostsRepo {
-        return PostsRepoImpl(dataSource)
+        return PostsRepoImpl(remoteDataSource, db)
     }
 
     @Provides
@@ -52,8 +53,8 @@ object RepoModule {
     @Singleton
     @JvmStatic
     fun provideSearchRepo(
-        dataSource: ISearchDataSource
+        remoteDataSource: ISearchRemoteDataSource
     ): SearchRepo {
-        return SearchRepoImpl(dataSource)
+        return SearchRepoImpl(remoteDataSource)
     }
 }

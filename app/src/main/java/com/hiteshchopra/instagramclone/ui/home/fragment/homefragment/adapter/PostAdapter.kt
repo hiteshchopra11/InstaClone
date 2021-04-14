@@ -3,11 +3,12 @@ package com.hiteshchopra.instagramclone.ui.home.fragment.homefragment.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.hiteshchopra.data.local.entity.PostsEntity
 import com.hiteshchopra.domain.model.Post
 import com.hiteshchopra.instagramclone.databinding.PostItemBinding
 
 class PostAdapter(
-    private val list: List<Post>,
+    private val list: List<PostsEntity>,
 ) :
     RecyclerView.Adapter<PostAdapter.ViewHolder>() {
 

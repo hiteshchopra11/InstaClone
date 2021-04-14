@@ -1,6 +1,7 @@
 package com.hiteshchopra.instagramclone.ui.login
 
 import android.Manifest
+import android.os.SystemClock
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.intent.Intents
@@ -18,7 +19,6 @@ import org.junit.Test
 class LoginActivityTest{
     @get:Rule
     var activityScenarioRule = activityScenarioRule<LoginActivity>()
-
 
     @get:Rule
     var permissionRule: GrantPermissionRule =
@@ -42,13 +42,12 @@ class LoginActivityTest{
         Intents.init()
         Espresso.onView(ViewMatchers.withId(R.id.btn_firebase_login_signup))
             .perform(ViewActions.click())
-        Thread.sleep(3000)
+        SystemClock.sleep(3000)
 
         Intents.intended(
             IntentMatchers.hasComponent(HomeActivity::class.java.name),
             (Intents.times(1))
         )
-
         Intents.release()
     }
 
@@ -62,7 +61,6 @@ class LoginActivityTest{
             IntentMatchers.hasComponent(SignUpActivity::class.java.name),
             (Intents.times(1))
         )
-
         Intents.release()
     }
 }

@@ -13,15 +13,18 @@ import com.hiteshchopra.instagramclone.ui.base.BaseFragment
 import com.hiteshchopra.instagramclone.ui.home.fragment.searchfragment.adapter.ImageAdapter
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @ExperimentalCoroutinesApi
 @FlowPreview
 class SearchFragment : BaseFragment<FragmentSearchBinding, SearchFragmentVM>() {
     override fun getViewModelClass(): Class<SearchFragmentVM> = SearchFragmentVM::class.java
+
     override fun layoutId(): Int = R.layout.fragment_search
 
     private lateinit var imageAdapter: ImageAdapter
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         showSearchTextViewPlaceholder(true)
@@ -31,27 +34,29 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchFragmentVM>() {
     }
 
     private fun addObservers() {
-        viewModel.searchResult.observe(viewLifecycleOwner, { state ->
-            when (state) {
-                is SearchState.Loading -> {
-                    showSearchTextViewPlaceholder(false)
-                    handleDataLoadingUi(true)
-                }
-                is SearchState.ShowImages -> {
-                    handleDataLoadingUi(false)
-                    showSearchTextViewPlaceholder(false)
-                    addImagesToRecycleView(state)
-                }
-                is SearchState.Error -> {
-                    showSearchTextViewPlaceholder(false)
-                    showErrorTextViewPlaceHolder(true)
-                    handleDataLoadingUi(false)
-                }
-                is SearchState.ShortQuery -> {
-                    showSearchTextViewPlaceholder(true)
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.images.collect { state ->
+                when (state) {
+                    is SearchState.Loading -> {
+                        showSearchTextViewPlaceholder(false)
+                        handleDataLoadingUi(true)
+                    }
+                    is SearchState.ShowImages -> {
+                        handleDataLoadingUi(false)
+                        showSearchTextViewPlaceholder(false)
+                        addImagesToRecycleView(state)
+                    }
+                    is SearchState.Error -> {
+                        showSearchTextViewPlaceholder(false)
+                        showErrorTextViewPlaceHolder(true)
+                        handleDataLoadingUi(false)
+                    }
+                    is SearchState.ShortQuery -> {
+                        showSearchTextViewPlaceholder(true)
+                    }
                 }
             }
-        })
+        }
     }
 
     private fun addImagesToRecycleView(state: SearchState.ShowImages) {
@@ -70,9 +75,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchFragmentVM>() {
                 }
 
                 override fun onQueryTextChange(newText: String): Boolean {
-                    lifecycleScope.launch {
-                        viewModel.queryChannel.send(newText)
-                    }
+                    viewModel.searchState.value = newText
                     return false
                 }
             })
@@ -93,6 +96,3 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchFragmentVM>() {
         }
     }
 }
-
-
-

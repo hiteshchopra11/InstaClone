@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.hiteshchopra.instagramclone.di.scope.ViewModelKey
 import com.hiteshchopra.instagramclone.ui.home.HomeVM
 import com.hiteshchopra.instagramclone.ui.home.fragment.homefragment.HomeScreenVM
-import com.hiteshchopra.instagramclone.ui.home.fragment.searchfragment.SearchFragment
 import com.hiteshchopra.instagramclone.ui.home.fragment.searchfragment.SearchFragmentVM
 import com.hiteshchopra.instagramclone.ui.login.LoginVM
 import com.hiteshchopra.instagramclone.ui.signup.SignUpVM
@@ -13,6 +12,8 @@ import com.hiteshchopra.instagramclone.utils.ViewModelFactory
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 
 @Module
 abstract class ViewModelFactoryModule {
@@ -39,6 +40,8 @@ abstract class ViewModelFactoryModule {
     @ViewModelKey(HomeScreenVM::class)
     abstract fun bindHomeScreenVM(homeScreenVM: HomeScreenVM): ViewModel
 
+    @ExperimentalCoroutinesApi
+    @FlowPreview
     @Binds
     @IntoMap
     @ViewModelKey(SearchFragmentVM::class)

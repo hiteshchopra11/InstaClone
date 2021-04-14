@@ -2,10 +2,10 @@ package com.hiteshchopra.data.injection
 
 import com.hiteshchopra.data.remote.HomeApiService
 import com.hiteshchopra.data.remote.SearchApiService
-import com.hiteshchopra.data.remote.posts.source.IPostsDataSource
-import com.hiteshchopra.data.remote.posts.source.PostsDataSource
-import com.hiteshchopra.data.remote.search.source.ISearchDataSource
-import com.hiteshchopra.data.remote.search.source.SearchDataSource
+import com.hiteshchopra.data.remote.posts.source.IPostsRemoteDataSource
+import com.hiteshchopra.data.remote.posts.source.PostsRemoteDataSource
+import com.hiteshchopra.data.remote.search.source.ISearchRemoteDataSource
+import com.hiteshchopra.data.remote.search.source.SearchRemoteDataSource
 import com.hiteshchopra.data.remote.stories.source.IStoriesDataSource
 import com.hiteshchopra.data.remote.stories.source.StoriesDataSource
 import dagger.Module
@@ -21,8 +21,8 @@ object SourcesModule {
     fun providePostsNetworkSource(
         homeApiService: HomeApiService,
         dispatcher: CoroutineDispatcher
-    ): IPostsDataSource {
-        return PostsDataSource(
+    ): IPostsRemoteDataSource {
+        return PostsRemoteDataSource(
             homeApiService,
             dispatcher
         )
@@ -47,8 +47,8 @@ object SourcesModule {
     fun provideSearchNetworkSource(
         searchApiService: SearchApiService,
         dispatcher: CoroutineDispatcher
-    ): ISearchDataSource {
-        return SearchDataSource(
+    ): ISearchRemoteDataSource {
+        return SearchRemoteDataSource(
             searchApiService,
             dispatcher
         )
