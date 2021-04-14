@@ -50,5 +50,4 @@ abstract class BaseActivityModule {
     @Binds
     @ActivityScope
     abstract fun provideActivity(activity: BaseActivity<*, *>): DaggerAppCompatActivity
-
 }

@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface PostsDao {
 
-    //Flow is cold so no nee of suspending functions
+    //Flow is cold so no need of suspending functions
     @Query("SELECT * FROM PostsEntity LIMIT 20")
     fun getPosts(): Flow<List<PostsEntity>>
 

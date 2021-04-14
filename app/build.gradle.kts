@@ -119,6 +119,9 @@ dependencies {
     /* Coroutines Play Service */
     implementation(Lib.CoroutinesPlayService.COROUTINES_PLAY_SERVICE)
 
+    /* Exoplayer */
+    implementation(Lib.ExoPlayer.EXOPLAYER)
+
     /* Unit Testing */
     testImplementation(TestLib.JUNIT)
     testImplementation(TestLib.CORE_TEST)

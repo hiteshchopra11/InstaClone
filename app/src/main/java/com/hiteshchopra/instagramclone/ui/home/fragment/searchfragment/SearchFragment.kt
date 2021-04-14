@@ -14,7 +14,6 @@ import com.hiteshchopra.instagramclone.ui.home.fragment.searchfragment.adapter.I
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
 @ExperimentalCoroutinesApi
 @FlowPreview
@@ -34,7 +33,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchFragmentVM>() {
     }
 
     private fun addObservers() {
-        viewLifecycleOwner.lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             viewModel.images.collect { state ->
                 when (state) {
                     is SearchState.Loading -> {

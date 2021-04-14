@@ -1,5 +1,6 @@
 package com.hiteshchopra.data.repository.posts
 
+import android.util.Log
 import androidx.room.withTransaction
 import com.hiteshchopra.data.ApiSafeResult
 import com.hiteshchopra.data.local.PostsDB
@@ -17,11 +18,9 @@ class PostsRepoImpl(
         return networkBoundResource(
             query = { postsDao.getPosts() },
             fetch = { postsRemoteDataSource.getPosts() },
-            saveFetchResult = { posts -> db.withTransaction {
+            saveFetchResult = { posts ->
                     postsDao.deleteAllPosts()
                     postsDao.insertMulPosts(posts)
-                }
-            }
-        )
+            })
     }
 }

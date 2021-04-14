@@ -13,18 +13,4 @@ import javax.inject.Singleton
 @Module
 class AppModule {
 
-    @Provides
-    @Singleton
-    @Named("applicationContext")
-    fun provideContext(@ApplicationContext applicationContext: Context): Context {
-        return applicationContext
-    }
-
-    @Provides
-    @Singleton
-    @ActivityContext
-    fun provideActivityContext(@ActivityContext activityContext: Context): Context {
-        return activityContext
-    }
-
 }

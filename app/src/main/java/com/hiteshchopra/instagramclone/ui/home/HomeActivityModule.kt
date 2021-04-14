@@ -7,6 +7,7 @@ import com.hiteshchopra.instagramclone.di.module.BaseActivityModule
 import com.hiteshchopra.instagramclone.di.qualifier.DatabaseContext
 import com.hiteshchopra.instagramclone.di.scope.FragmentScope
 import com.hiteshchopra.instagramclone.ui.home.fragment.homefragment.HomeFragment
+import com.hiteshchopra.instagramclone.ui.home.fragment.reelsfragment.ReelsFragment
 import com.hiteshchopra.instagramclone.ui.home.fragment.searchfragment.SearchFragment
 import com.hiteshchopra.instagramclone.ui.home.fragment.searchfragment.SearchFragmentVM
 import dagger.Module
@@ -25,4 +26,7 @@ abstract class HomeActivityModule {
     @ContributesAndroidInjector
     internal abstract fun showSearchFragment(): SearchFragment
 
+    @FragmentScope
+    @ContributesAndroidInjector
+    internal abstract fun showReelsFragment(): ReelsFragment
 }

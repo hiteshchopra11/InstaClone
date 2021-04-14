@@ -16,7 +16,7 @@
         tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/reelsScreen"
-        android:name="com.hiteshchopra.instagramclone.ui.home.fragment.ReelsFragment"
+        android:name="com.hiteshchopra.instagramclone.ui.home.fragment.reelsfragment.ReelsFragment"
         android:label="fragment_reels"
         tools:layout="@layout/fragment_reels" />
     <fragment

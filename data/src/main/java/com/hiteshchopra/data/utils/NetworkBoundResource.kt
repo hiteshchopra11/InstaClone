@@ -1,5 +1,6 @@
 package com.hiteshchopra.data.utils
 
+import android.util.Log
 import com.hiteshchopra.data.ApiSafeResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll
@@ -15,6 +16,7 @@ inline fun <ResultType, RequestType> networkBoundResource(
 ) =
     flow<ApiSafeResult<ResultType>> {
         val data = query().first()
+        Log.e("Data",data.toString())
         val flow = if (shouldFetch(data)) {
             try {
                 saveFetchResult(fetch())

@@ -19,6 +19,7 @@ sealed class ApiSafeResult<out T> {
             is Success -> "Success[data=$data]"
             is Failure -> "Failure[exception=$exception]"
             is NetworkError -> "NetworkError"
+            else ->  "NetworkError"
         }
     }
 }

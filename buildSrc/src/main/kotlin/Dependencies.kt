@@ -1,5 +1,3 @@
-
-
 /** This file contains versions of all the dependencies used in the module  */
 
 object BuildPlugins {
@@ -134,6 +132,11 @@ object Lib {
         private const val HILT_VERSION = "2.33-beta"
         const val HILT_ANDROID = "com.google.dagger:hilt-android:$HILT_VERSION"
         const val HILT_COMPILER = "com.google.dagger:hilt-compiler:$HILT_VERSION"
+    }
+
+    object ExoPlayer {
+        private const val EXOPLAYER_VERSION = "2.13.2"
+        const val EXOPLAYER = "com.google.android.exoplayer:exoplayer:$EXOPLAYER_VERSION"
     }
 
 }

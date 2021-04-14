@@ -21,7 +21,11 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginVM>() {
     override fun getViewModelClass(): Class<LoginVM> = LoginVM::class.java
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        addListeners()
+        ActivityNavigator.startActivity(
+            HomeActivity::class.java,
+            this
+        )
+        //        addListeners()
     }
 
     private fun addListeners() {
