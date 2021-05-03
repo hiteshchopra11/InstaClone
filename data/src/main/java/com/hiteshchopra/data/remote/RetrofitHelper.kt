@@ -19,7 +19,7 @@ object RetrofitHelper {
         }
     }
 
-    fun createHomeOkHttpClient(): OkHttpClient {
+    fun createOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(okHttpLoggingInterceptor)
             .retryOnConnectionFailure(true)

@@ -4,7 +4,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.hiteshchopra.instagramclone.di.scope.ViewModelKey
 import com.hiteshchopra.instagramclone.ui.home.HomeVM
-import com.hiteshchopra.instagramclone.ui.home.fragment.homefragment.HomeScreenVM
+import com.hiteshchopra.instagramclone.ui.home.fragment.accountfragment.AccountFragmentVM
+import com.hiteshchopra.instagramclone.ui.home.fragment.accountfragment.profile.posts.PostsFragmentVM
+import com.hiteshchopra.instagramclone.ui.home.fragment.accountfragment.profile.reels.ProfileReelsFragmentVM
+import com.hiteshchopra.instagramclone.ui.home.fragment.accountfragment.profile.tagged.TaggedFragmentVM
+import com.hiteshchopra.instagramclone.ui.home.fragment.homefragment.HomeFragmentVM
+import com.hiteshchopra.instagramclone.ui.home.fragment.notificationsfragment.NotificationsFragmentVM
 import com.hiteshchopra.instagramclone.ui.home.fragment.reelsfragment.ReelsFragmentVM
 import com.hiteshchopra.instagramclone.ui.home.fragment.searchfragment.SearchFragmentVM
 import com.hiteshchopra.instagramclone.ui.login.LoginVM
@@ -38,8 +43,8 @@ abstract class ViewModelFactoryModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(HomeScreenVM::class)
-    abstract fun bindHomeScreenVM(homeScreenVM: HomeScreenVM): ViewModel
+    @ViewModelKey(HomeFragmentVM::class)
+    abstract fun bindHomeScreenVM(homeFragmentVM: HomeFragmentVM): ViewModel
 
     @ExperimentalCoroutinesApi
     @FlowPreview
@@ -52,4 +57,29 @@ abstract class ViewModelFactoryModule {
     @IntoMap
     @ViewModelKey(ReelsFragmentVM::class)
     abstract fun bindReelsVM(reelsFragmentVM: ReelsFragmentVM): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(NotificationsFragmentVM::class)
+    abstract fun bindNotificationsVM(notificationsFragmentVM: NotificationsFragmentVM): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AccountFragmentVM::class)
+    abstract fun bindAccountVM(accountFragmentVM: AccountFragmentVM): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PostsFragmentVM::class)
+    abstract fun bindProfilePostVM(accountFragmentVM: PostsFragmentVM): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ProfileReelsFragmentVM::class)
+    abstract fun bindProfileReelsVM(profileReelsFragmentVM: ProfileReelsFragmentVM): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(TaggedFragmentVM::class)
+    abstract fun bindTaggedVM(taggedFragmentVM: TaggedFragmentVM): ViewModel
 }

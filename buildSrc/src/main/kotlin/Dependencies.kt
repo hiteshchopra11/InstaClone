@@ -52,7 +52,7 @@ object Lib {
     }
 
     object Database {
-        private const val ROOM_VERSION = "2.2.5"
+        private const val ROOM_VERSION = "2.4.0-alpha01"
         const val ROOM = "androidx.room:room-runtime:${ROOM_VERSION}"
         const val ROOM_DATABASE_COMPILER = "androidx.room:room-compiler:${ROOM_VERSION}"
     }
@@ -139,6 +139,11 @@ object Lib {
         const val EXOPLAYER = "com.google.android.exoplayer:exoplayer:$EXOPLAYER_VERSION"
     }
 
+    object ViewPager2 {
+        private const val VIEWPAGER2_VERSION = "1.0.0"
+        const val VIEWPAGER2 = "androidx.viewpager2:viewpager2:$VIEWPAGER2_VERSION"
+    }
+
 }
 
 object TestLib {
@@ -151,6 +156,7 @@ object TestLib {
     private const val JUNIT_VERSION = "4.13.2"
     private const val ESPRESSO_VERSION = "3.3.0"
     private const val MOCKK_VERSION = "1.9.3"
+    private const val TRUTH_VERSION = "1.1.2"
 
     const val COROUTINES =
         "org.jetbrains.kotlinx:kotlinx-coroutines-test:${COROUTINES_VERSION}"
@@ -164,6 +170,7 @@ object TestLib {
     const val MOCKK = "io.mockk:mockk:$MOCKK_VERSION"
     const val ESPRESSOO = "androidx.test.espresso:espresso-core:$ESPRESSO_VERSION"
     const val ARCH_CORE = "androidx.arch.core:core-testing:${ARCH_CORE_VERSION}"
+    const val TRUTH = "com.google.truth:truth:${TRUTH_VERSION}"
 }
 
 object AndroidTestLib {

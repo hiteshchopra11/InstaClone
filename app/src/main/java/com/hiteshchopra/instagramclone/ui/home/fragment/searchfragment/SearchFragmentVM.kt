@@ -41,7 +41,7 @@ class SearchFragmentVM @Inject constructor(
                 SearchState.ShowImages(result.data)
             }
             is ApiSafeResult.Failure -> {
-                SearchState.Error(result.message)
+                result.message?.let { SearchState.Error(it) }
             }
             ApiSafeResult.NetworkError -> {
                 SearchState.Error("Network Error")

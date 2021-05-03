@@ -46,13 +46,14 @@ dependencies {
 
     /* Dependency Injection */
     api(Lib.Di.DAGGER)
+    implementation("androidx.sqlite:sqlite-ktx:2.1.0")
     kapt(Lib.Di.DAGGER_PROCESSOR)
     kapt(Lib.Di.DAGGER_COMPILER)
 
     /* Room */
-    implementation("androidx.room:room-runtime:2.3.0-rc01")
-    kapt("androidx.room:room-compiler:2.3.0-rc01")
-    implementation("androidx.room:room-ktx:2.3.0-rc01")
+    implementation("androidx.room:room-runtime:2.4.0-alpha01")
+    kapt("androidx.room:room-compiler:2.4.0-alpha01")
+    implementation("androidx.room:room-ktx:2.4.0-alpha01")
 
     /* Firebase Sign In */
     implementation(Lib.Firebase.FIREBASE_LOGIN)
@@ -62,6 +63,7 @@ dependencies {
 
     /* Testing */
     testImplementation(TestLib.MOCKK)
+    testImplementation(TestLib.TRUTH)
     androidTestImplementation(TestLib.JUNIT)
     androidTestImplementation(TestLib.CORE_TEST)
     androidTestImplementation(TestLib.ANDROID_JUNIT)
@@ -71,4 +73,5 @@ dependencies {
     androidTestImplementation(TestLib.MOCKK)
     androidTestImplementation(TestLib.ANDROID_JUNIT_KTX)
     androidTestImplementation(TestLib.ESPRESSOO)
+
 }

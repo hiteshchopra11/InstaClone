@@ -1,6 +1,7 @@
 package com.hiteshchopra.data.remote
 
-import com.hiteshchopra.data.local.entity.PostsEntity
+import com.hiteshchopra.data.local.posts.entity.PostsEntity
+import com.hiteshchopra.data.remote.posts.model.PostList
 import com.hiteshchopra.data.remote.stories.model.StoriesList
 import retrofit2.Retrofit
 import retrofit2.http.GET
@@ -12,8 +13,9 @@ interface HomeApiService {
         }
     }
 
+    //TODO wrap in Response
     @GET("/posts")
-    suspend fun getPosts(): List<PostsEntity>
+    suspend fun getPosts(): PostList
 
     @GET("/stories")
     suspend fun getStories(): StoriesList

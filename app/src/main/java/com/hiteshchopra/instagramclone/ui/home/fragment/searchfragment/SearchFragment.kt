@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.hiteshchopra.instagramclone.R
 import com.hiteshchopra.instagramclone.databinding.FragmentSearchBinding
 import com.hiteshchopra.instagramclone.ui.base.BaseFragment
-import com.hiteshchopra.instagramclone.ui.home.fragment.searchfragment.adapter.ImageAdapter
+import com.hiteshchopra.instagramclone.ui.home.fragment.searchfragment.adapter.ImageListAdapter
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.collect
@@ -22,7 +22,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchFragmentVM>() {
 
     override fun layoutId(): Int = R.layout.fragment_search
 
-    private lateinit var imageAdapter: ImageAdapter
+    private lateinit var imageAdapter: ImageListAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -59,7 +59,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchFragmentVM>() {
     }
 
     private fun addImagesToRecycleView(state: SearchState.ShowImages) {
-        imageAdapter = ImageAdapter(state.images)
+        imageAdapter = ImageListAdapter()
+        imageAdapter.submitList(state.images)
         binding.rvImages.apply {
             layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL);
             adapter = imageAdapter

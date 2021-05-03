@@ -1,31 +1,30 @@
 package com.hiteshchopra.data.utils
 
-import android.util.Log
 import com.hiteshchopra.data.ApiSafeResult
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 
+@ExperimentalCoroutinesApi
 inline fun <ResultType, RequestType> networkBoundResource(
     crossinline query: () -> Flow<ResultType>,
     crossinline fetch: suspend () -> RequestType,
     crossinline saveFetchResult: suspend (RequestType) -> Unit,
-    crossinline shouldFetch: (ResultType) -> Boolean = { true }
-) =
-    flow<ApiSafeResult<ResultType>> {
-        val data = query().first()
-        Log.e("Data",data.toString())
-        val flow = if (shouldFetch(data)) {
-            try {
-                saveFetchResult(fetch())
-                query().map { ApiSafeResult.Success(it) }
-            } catch (throwable: Throwable) {
-                query().map { ApiSafeResult.Failure() }
-            }
-        } else {
+    crossinline shouldFetch: (ResultType) -> Boolean = { true },
+) = flow<ApiSafeResult<ResultType>> {
+    val data = query().first()
+    val flow = if (shouldFetch(data)) {
+        try {
+            saveFetchResult(fetch())
             query().map { ApiSafeResult.Success(it) }
+        } catch (throwable: Throwable) {
+            query().map { ApiSafeResult.Failure(it, null, throwable.message) }
         }
-        emitAll(flow)
+    } else {
+        query().map { (ApiSafeResult.Success(it)) }
     }
+    emitAll(flow)
+}

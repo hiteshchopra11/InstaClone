@@ -12,7 +12,7 @@ class UseCaseSearch(
         return when (val result = searchRepo.searchImages(executableParam)) {
             is ApiSafeResult.Success -> ApiSafeResult.Success(result.data.toImages())
             is ApiSafeResult.NetworkError -> result
-            is ApiSafeResult.Failure -> result
+            is ApiSafeResult.Failure -> ApiSafeResult.Failure(result.data?.toImages())
         }
     }
 }

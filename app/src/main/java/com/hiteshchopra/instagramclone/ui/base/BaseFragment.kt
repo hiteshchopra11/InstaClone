@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 abstract class BaseFragment<B : ViewDataBinding, VM : ViewModel> : DaggerFragment() {
     protected lateinit var binding: B
-    lateinit var viewModel: VM
+    open lateinit var viewModel: VM
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory

@@ -3,10 +3,10 @@ package com.hiteshchopra.instagramclone.injection.module
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.hiteshchopra.data.listener.FirebaseListener
+import com.hiteshchopra.data.remote.NotificationsApiService
+import com.hiteshchopra.data.remote.ReelsApiService
 import com.hiteshchopra.data.remote.SearchApiService
 import com.hiteshchopra.data.repository.firebase.FirebaseRepo
-import com.hiteshchopra.data.repository.search.SearchRepo
-import com.hiteshchopra.instagramclone.repository.FakeSearchRepository
 import com.hiteshchopra.instagramclone.repository.RepositoryTest
 import dagger.Module
 import dagger.Provides
@@ -61,15 +61,6 @@ object TestNetworkModule {
     fun provideFirebaseUser(): FirebaseUser {
         return mockk<FirebaseUser>()
     }
-
-
-    @Singleton
-    @JvmStatic
-    @Provides
-    fun provideFakeSearchRepository(): SearchRepo {
-        return FakeSearchRepository()
-    }
-
 
     @Provides
     @Singleton
@@ -126,4 +117,18 @@ object TestNetworkModule {
     fun provideSearchApiService(retrofit: Retrofit): SearchApiService {
         return SearchApiService.createRetrofitService(retrofit)
     }
+
+    @Provides
+    @Singleton
+    @JvmStatic
+    fun provideReelsApiService(retrofit: Retrofit): ReelsApiService {
+        return ReelsApiService.createRetrofitService(retrofit)
+    }
+
+//    @Provides
+//    @Singleton
+//    @JvmStatic
+//    fun provideNotificationsApiService(retrofit: Retrofit): NotificationsApiService {
+//        return NotificationsApiService.createRetrofitInstance(retrofit)
+//    }
 }

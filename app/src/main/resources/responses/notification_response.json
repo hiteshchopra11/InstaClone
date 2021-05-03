@@ -1,0 +1,56 @@
+[
+  {
+    "id": "1",
+    "heading": "This week"
+  },
+  {
+    "id": "2",
+    "image": "https://source.unsplash.com/random",
+    "notification": "random12345 mentioned you in a comment @random54321",
+    "time": "1d"
+  },
+  {
+    "id": "3",
+    "image": "https://source.unsplash.com/random",
+    "notification": "random12345 mentioned you in a comment @random54321",
+    "time": "2d"
+  },
+  {
+    "id": "4",
+    "heading": "This month"
+  },
+  {
+    "id": "5",
+    "image": "https://source.unsplash.com/random",
+    "notification": "random12345 mentioned you in a comment @random54321",
+    "time": "4d"
+  },
+  {
+    "id": "6",
+    "image": "https://source.unsplash.com/random",
+    "notification": "random12345 mentioned you in a comment @random54321",
+    "time": "10d"
+  },
+  {
+    "id": "7",
+    "image": "https://source.unsplash.com/random",
+    "notification": "random12345 mentioned you in a comment @random54321",
+    "time": "15d"
+  },
+  {
+    "id": "8",
+    "heading": "Earlier"
+  },
+  {
+    "id": "9",
+    "image": "https://source.unsplash.com/random",
+    "notification": "random12345 mentioned you in a comment @random54321",
+    "time": "10 March"
+  },
+  {
+    "id": "10",
+    "image": "https://source.unsplash.com/random",
+    "notification": "random12345 mentioned you in a comment @random54321",
+    "time": "2 March"
+  }
+]

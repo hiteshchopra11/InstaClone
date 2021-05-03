@@ -11,10 +11,10 @@ import com.hiteshchopra.instagramclone.R
 object BindingAdapters {
     @JvmStatic
     @BindingAdapter("image")
-    fun loadImage(view: ImageView, url: String) {
+    fun loadImage(view: ImageView, url: String?) {
         Glide.with(view)
             .load(url)
-            .diskCacheStrategy(DiskCacheStrategy.NONE)
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
             .apply(RequestOptions().error(R.drawable.ic_launcher_background)).into(view)
     }
 }

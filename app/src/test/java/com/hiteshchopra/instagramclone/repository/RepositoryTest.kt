@@ -97,9 +97,8 @@ class RepositoryTest : FirebaseListener {
         override fun addOnCompleteListener(
             onCompleteListener: OnCompleteListener<AuthResult>
         ): Task<AuthResult> {
-//            onCompleteListener.onComplete(successTask)
-//            return successTask
-            return null!!
+            onCompleteListener.onComplete(successTask)
+            return successTask
         }
     }
 

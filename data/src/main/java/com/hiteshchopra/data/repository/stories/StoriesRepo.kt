@@ -1,8 +1,9 @@
 package com.hiteshchopra.data.repository.stories
 
 import com.hiteshchopra.data.ApiSafeResult
-import com.hiteshchopra.data.remote.stories.model.StoriesList
+import com.hiteshchopra.data.local.stories.entity.StoriesEntity
+import kotlinx.coroutines.flow.Flow
 
 interface StoriesRepo {
-    suspend fun getStories(): ApiSafeResult<StoriesList>
+    suspend fun getStories(): Flow<ApiSafeResult<List<StoriesEntity>>>
 }

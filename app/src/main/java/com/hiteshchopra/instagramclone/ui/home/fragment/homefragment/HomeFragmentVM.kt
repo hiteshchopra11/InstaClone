@@ -5,15 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hiteshchopra.data.ApiSafeResult
-import com.hiteshchopra.data.local.entity.PostsEntity
-import com.hiteshchopra.domain.model.Stories
+import com.hiteshchopra.data.local.posts.entity.PostsEntity
+import com.hiteshchopra.data.local.stories.entity.StoriesEntity
 import com.hiteshchopra.domain.usecase.UseCasePosts
 import com.hiteshchopra.domain.usecase.UseCaseStories
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class HomeScreenVM @Inject constructor(
+class HomeFragmentVM @Inject constructor(
     private val useCasePosts: UseCasePosts,
     private val useCaseStories: UseCaseStories
 ) : ViewModel() {
@@ -28,17 +28,14 @@ class HomeScreenVM @Inject constructor(
         _postsState.value = PostsState.Loading
         viewModelScope.launch {
             val result = useCasePosts.perform()
-            result.collect { result ->
-                when (result) {
-                    is ApiSafeResult.Success -> {
-                        _postsState.value = PostsState.ShowPosts(result.data)
-                    }
-                    is ApiSafeResult.Failure -> {
-                        _postsState.value = PostsState.Error(result.message)
-                    }
-                    ApiSafeResult.NetworkError -> {
+            result.collect { response ->
+                when (response) {
+                    is ApiSafeResult.Success ->
+                        _postsState.value = PostsState.ShowPosts(response.data)
+                    is ApiSafeResult.Failure ->
+                        _postsState.value = response.data?.let { PostsState.ShowPosts(it) }
+                    is ApiSafeResult.NetworkError ->
                         _postsState.value = PostsState.Error("Network Error")
-                    }
                 }
             }
         }
@@ -47,15 +44,15 @@ class HomeScreenVM @Inject constructor(
     fun loadStories() {
         _storiesState.value = StoriesState.Loading
         viewModelScope.launch {
-            when (val result = useCaseStories.perform()) {
-                is ApiSafeResult.Success -> {
-                    _storiesState.value = StoriesState.ShowStories(result.data)
-                }
-                is ApiSafeResult.Failure -> {
-                    _storiesState.value = StoriesState.Error(result.message)
-                }
-                ApiSafeResult.NetworkError -> {
-                    _storiesState.value = StoriesState.Error("Network Error")
+            val result = useCaseStories.perform()
+            result.collect { response ->
+                when (response) {
+                    is ApiSafeResult.Success -> _storiesState.value =
+                        StoriesState.ShowStories(response.data)
+                    is ApiSafeResult.Failure -> _storiesState.value =
+                        response.data?.let { StoriesState.ShowStories(it) }
+                    is ApiSafeResult.NetworkError -> _storiesState.value =
+                        StoriesState.Error("Network Error")
                 }
             }
         }
@@ -70,6 +67,6 @@ sealed class PostsState {
 
 sealed class StoriesState {
     object Loading : StoriesState()
-    class ShowStories(val stories: List<Stories>) : StoriesState()
+    class ShowStories(val stories: List<StoriesEntity>) : StoriesState()
     class Error(val message: String) : StoriesState()
 }

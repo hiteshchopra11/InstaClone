@@ -37,13 +37,13 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginVM>() {
                 intent.flags = Intent.FLAG_ACTIVITY_NO_ANIMATION
                 startActivity(intent)
             }
-
             layoutUsernamePassword.btnFirebaseLoginSignup.setOnClickListener {
                 val email = binding.layoutUsernamePassword.etUsername.text.toString()
                 val password = binding.layoutUsernamePassword.etPassword.text.toString()
                 viewModel.validateEmailPassword(email, password)
                 validationResultAndSignIn(email, password)
             }
+
         }
     }
 

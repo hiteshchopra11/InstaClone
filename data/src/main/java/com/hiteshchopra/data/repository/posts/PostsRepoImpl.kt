@@ -1,14 +1,16 @@
 package com.hiteshchopra.data.repository.posts
 
-import android.util.Log
 import androidx.room.withTransaction
 import com.hiteshchopra.data.ApiSafeResult
-import com.hiteshchopra.data.local.PostsDB
-import com.hiteshchopra.data.local.entity.PostsEntity
+import com.hiteshchopra.data.local.posts.PostsDB
+import com.hiteshchopra.data.local.posts.entity.PostsEntity
 import com.hiteshchopra.data.remote.posts.source.IPostsRemoteDataSource
 import com.hiteshchopra.data.utils.networkBoundResource
+import com.hiteshchopra.data.utils.toPostsEntity
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 
+@ExperimentalCoroutinesApi
 class PostsRepoImpl(
     private val postsRemoteDataSource: IPostsRemoteDataSource,
     private val db: PostsDB
@@ -19,8 +21,9 @@ class PostsRepoImpl(
             query = { postsDao.getPosts() },
             fetch = { postsRemoteDataSource.getPosts() },
             saveFetchResult = { posts ->
-                    postsDao.deleteAllPosts()
-                    postsDao.insertMulPosts(posts)
+                db.withTransaction {
+                    postsDao.insertMulPosts(posts.toPostsEntity())
+                }
             })
     }
 }

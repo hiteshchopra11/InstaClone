@@ -4,16 +4,15 @@ import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
 import androidx.core.view.isVisible
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hiteshchopra.instagramclone.R
 import com.hiteshchopra.instagramclone.databinding.FragmentHomeScreenBinding
 import com.hiteshchopra.instagramclone.ui.base.BaseFragment
-import com.hiteshchopra.instagramclone.ui.home.fragment.homefragment.adapter.PostAdapter
+import com.hiteshchopra.instagramclone.ui.home.fragment.homefragment.adapter.PostListAdapter
 import com.hiteshchopra.instagramclone.ui.home.fragment.homefragment.adapter.StoriesAdapter
 
-class HomeFragment : BaseFragment<FragmentHomeScreenBinding, HomeScreenVM>() {
-    override fun getViewModelClass(): Class<HomeScreenVM> = HomeScreenVM::class.java
+class HomeFragment : BaseFragment<FragmentHomeScreenBinding, HomeFragmentVM>() {
+    override fun getViewModelClass(): Class<HomeFragmentVM> = HomeFragmentVM::class.java
 
     override fun layoutId(): Int = R.layout.fragment_home_screen
 
@@ -58,9 +57,11 @@ class HomeFragment : BaseFragment<FragmentHomeScreenBinding, HomeScreenVM>() {
     }
 
     private fun addPostsToRecycleView(state: PostsState.ShowPosts) {
+        val postListAdapter = PostListAdapter()
+        postListAdapter.submitList(state.posts)
         binding.rvPosts.apply {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = PostAdapter(state.posts)
+            adapter = postListAdapter
         }
     }
 

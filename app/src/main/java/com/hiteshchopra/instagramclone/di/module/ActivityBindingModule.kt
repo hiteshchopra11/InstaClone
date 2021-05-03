@@ -15,7 +15,11 @@ import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import dagger.android.support.DaggerAppCompatActivity
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 
+@ExperimentalCoroutinesApi
+@FlowPreview
 @Module
 abstract class ActivityBindingModule {
     @ActivityScope
@@ -30,12 +34,12 @@ abstract class ActivityBindingModule {
     )
     internal abstract fun bindSignUpActivity(): SignUpActivity
 
+
     @ActivityScope
     @ContributesAndroidInjector(
         modules = [HomeActivityModule::class]
     )
     internal abstract fun bindHomeActivity(): HomeActivity
-
 }
 
 /**

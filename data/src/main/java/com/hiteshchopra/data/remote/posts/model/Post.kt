@@ -5,8 +5,10 @@ import com.google.gson.annotations.SerializedName
 data class Post(
     @SerializedName("commentsCount")
     val commentsCount: Int,
-    @SerializedName("image")
-    val image: String,
+    @SerializedName("postImage")
+    val postImage: String,
+    @SerializedName("storiesImage")
+    val storiesImage: String,
     @SerializedName("likesCount")
     val likesCount: Int,
     @SerializedName("location")

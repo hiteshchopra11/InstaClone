@@ -1,7 +1,7 @@
 package com.hiteshchopra.data.remote.posts.source
 
 import com.hiteshchopra.data.ApiSafeResult
-import com.hiteshchopra.data.local.entity.PostsEntity
+import com.hiteshchopra.data.local.posts.entity.PostsEntity
 import com.hiteshchopra.data.remote.HomeApiService
 import com.hiteshchopra.data.remote.posts.model.PostList
 import com.hiteshchopra.data.remote.safeApiCall
@@ -12,7 +12,7 @@ class PostsRemoteDataSource(
     private val homeApiService: HomeApiService,
     private val dispatcher: CoroutineDispatcher
 ) : IPostsRemoteDataSource {
-    override suspend fun getPosts(): List<PostsEntity> {
+    override suspend fun getPosts():PostList {
         return withContext(dispatcher){
             homeApiService.getPosts()
         }

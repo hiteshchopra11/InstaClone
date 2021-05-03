@@ -30,9 +30,18 @@ android {
     }
 
     packagingOptions {
+        exclude("META-INF/DEPENDENCIES")
+        exclude("META-INF/LICENSE")
         exclude("META-INF/LICENSE.txt")
+        exclude("META-INF/license.txt")
+        exclude("META-INF/NOTICE")
         exclude("META-INF/NOTICE.txt")
-        exclude("LICENSE.txt")
+        exclude("META-INF/notice.txt")
+        exclude("META-INF/LGPL2.1")
+        exclude("META-INF/licenses/**")
+        exclude("META-INF/AL2.0")
+        exclude("META-INF/LGPL2.1")
+        exclude("META-INF/*.kotlin_module")
     }
 
     dexOptions {
@@ -88,6 +97,8 @@ dependencies {
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.0")
     implementation("androidx.room:room-runtime:2.2.6")
+    implementation("androidx.media2:media2-exoplayer:1.1.2")
+    implementation("junit:junit:4.13.2")
     annotationProcessor("androidx.room:room-compiler:2.2.6")
     kapt(Lib.Di.DAGGER_PROCESSOR)
     kapt(Lib.Di.DAGGER_COMPILER)
@@ -119,8 +130,8 @@ dependencies {
     /* Coroutines Play Service */
     implementation(Lib.CoroutinesPlayService.COROUTINES_PLAY_SERVICE)
 
-    /* Exoplayer */
-    implementation(Lib.ExoPlayer.EXOPLAYER)
+    /* ViewPager2 */
+    implementation(Lib.ViewPager2.VIEWPAGER2)
 
     /* Unit Testing */
     testImplementation(TestLib.JUNIT)
@@ -133,6 +144,7 @@ dependencies {
     testImplementation(TestLib.ANDROID_JUNIT_KTX)
     testImplementation(TestLib.ESPRESSOO)
     testImplementation(TestLib.ARCH_CORE)
+    testImplementation(TestLib.TRUTH)
 
     /* Android UI Testing */
     implementation(AndroidTestLib.CORE)
@@ -149,4 +161,7 @@ dependencies {
     androidTestImplementation(AndroidTestLib.CORE_VERSION)
     androidTestImplementation(AndroidTestLib.EXT_JUNIT_VERSION)
     androidTestImplementation("androidx.navigation:navigation-testing:2.3.5")
+    androidTestImplementation(TestLib.TRUTH)
+    androidTestImplementation(TestLib.COROUTINES)
+    androidTestImplementation(TestLib.ROBO_ELECTRIC)
 }

@@ -2,46 +2,84 @@ package com.hiteshchopra.instagramclone.ui.home.fragment.reelsfragment
 
 import android.os.Bundle
 import android.view.View
-import com.google.android.exoplayer2.MediaItem
-import com.google.android.exoplayer2.Player
-import com.google.android.exoplayer2.SimpleExoPlayer
-import com.google.android.exoplayer2.upstream.DataSource
-import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
+import android.view.WindowManager
+import androidx.viewpager2.widget.ViewPager2
 import com.hiteshchopra.instagramclone.R
 import com.hiteshchopra.instagramclone.databinding.FragmentReelsBinding
 import com.hiteshchopra.instagramclone.ui.base.BaseFragment
+import com.hiteshchopra.instagramclone.ui.home.fragment.reelsfragment.utils.ReelsListener
+import com.hiteshchopra.instagramclone.ui.home.fragment.reelsfragment.utils.adapter.ViewPagerVideoAdapter
 
-class ReelsFragment : BaseFragment<FragmentReelsBinding, ReelsFragmentVM>(), Player.EventListener {
-    private lateinit var player: SimpleExoPlayer
+class ReelsFragment : BaseFragment<FragmentReelsBinding, ReelsFragmentVM>(), ReelsListener {
 
+    lateinit var viewPagerAdapter: ViewPagerVideoAdapter
     override fun getViewModelClass(): Class<ReelsFragmentVM> = ReelsFragmentVM::class.java
 
     override fun layoutId(): Int = R.layout.fragment_reels
 
-
-    private val dataSourceFactory: DataSource.Factory by lazy {
-        DefaultDataSourceFactory(requireContext(), "exoplayer-sample")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initObservers()
+        setErrorTextViewVisibility(false)
+        viewModel.getReels()
     }
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    private fun initObservers() {
+        viewModel.reelsState.observe(viewLifecycleOwner, { state ->
+            when (state) {
+                is ReelsState.Loading -> {
+                    setProgressBarVisible(true)
+                }
+                is ReelsState.ShowReels -> {
+                    viewPagerAdapter = ViewPagerVideoAdapter(state.data)
+                    viewPagerAdapter.setListener(this@ReelsFragment)
+                    binding.viewPager2.adapter = viewPagerAdapter
+                    binding.viewPager2.orientation = ViewPager2.ORIENTATION_VERTICAL
+                }
+                is ReelsState.Failure -> {
+                    setProgressBarVisible(false)
+                    setErrorText(state.message)
+                    setErrorTextViewVisibility(true)
+                }
+                is ReelsState.NetworkError -> {
+                    setProgressBarVisible(false)
+                    setErrorText(getString(R.string.network_error))
+                    setErrorTextViewVisibility(true)
+                }
+            }
+        })
+    }
 
-        /*ExoPlayer instances must be accessed from a single application thread.
-         For the vast majority of cases this should be the application’s main thread*/
+    private fun setProgressBarVisible(bool: Boolean) {
+        if (bool) {
+            binding.pbReels.visibility = View.VISIBLE
+        } else {
+            binding.pbReels.visibility = View.GONE
+        }
+    }
 
-        player = SimpleExoPlayer.Builder(requireContext()).build()
-        // Bind the player to the view.
-        binding.pvReels.player = player
-        // Build the media item.
-        val mediaItem: MediaItem =
-            MediaItem.fromUri("https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4")
-        // Set the media item to be played.
-        player.setMediaItem(mediaItem)
-        // Prepare the player.
-        player.prepare()
+    private fun setErrorTextViewVisibility(bool: Boolean) {
+        if (bool) {
+            binding.tvError.visibility = View.VISIBLE
+        } else {
+            binding.tvError.visibility = View.GONE
+        }
+    }
 
-        // Start the playback.
-        player.play()
+    private fun setErrorText(value: String) {
+        binding.tvError.text = value
+    }
+
+    override fun removeProgressBar() {
+        setProgressBarVisible(false)
+    }
+
+    override fun moveToNextVideo() {
+        binding.viewPager2.setCurrentItem(binding.viewPager2.currentItem + 1, true)
+    }
+
+    override fun setError(string: String) {
+        setErrorText(string)
     }
 }

@@ -7,19 +7,19 @@ package com.hiteshchopra.data
 sealed class ApiSafeResult<out T> {
 
     data class Success<T>(val data: T) : ApiSafeResult<T>()
-    data class Failure(
+    data class Failure<T>(
+        val data: T? = null,
         val exception: Exception? = Exception("Unknown Error"),
-        val message: String = exception?.localizedMessage ?: ""
-    ) : ApiSafeResult<Nothing>()
+        val message: String? = exception?.localizedMessage ?: ""
+    ) : ApiSafeResult<T>()
 
     object NetworkError : ApiSafeResult<Nothing>()
 
     override fun toString(): String {
         return when (this) {
             is Success -> "Success[data=$data]"
-            is Failure -> "Failure[exception=$exception]"
             is NetworkError -> "NetworkError"
-            else ->  "NetworkError"
+            else -> "NetworkError"
         }
     }
 }
@@ -37,9 +37,9 @@ fun <T> ApiSafeResult<T>.getSuccessOrNull(): T? {
     }
 }
 
-fun <T> ApiSafeResult<T>.getErrorOrNull(): ApiSafeResult.Failure? {
+fun <T> ApiSafeResult<T>.getErrorOrNull(): ApiSafeResult.Failure<*>? {
     return when (this) {
-        is ApiSafeResult.Failure -> this
+        is ApiSafeResult.Failure<*> -> this
         else -> null
     }
 }

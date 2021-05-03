@@ -1,6 +1,5 @@
 package com.hiteshchopra.data.remote
 
-import android.util.Log
 import com.hiteshchopra.data.ApiSafeResult
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
@@ -15,11 +14,10 @@ internal suspend fun <T> safeApiCall(
         try {
             ApiSafeResult.Success(apiCall.invoke())
         } catch (throwable: Throwable) {
-            Log.e("safeApiCall", throwable.message.toString())
             when (throwable) {
                 is IOException -> ApiSafeResult.NetworkError
-                is HttpException -> ApiSafeResult.Failure(throwable)
-                else -> ApiSafeResult.Failure(Exception(throwable))
+                is HttpException -> ApiSafeResult.Failure(null, throwable)
+                else -> ApiSafeResult.Failure(null, Exception(throwable))
             }
         }
     }

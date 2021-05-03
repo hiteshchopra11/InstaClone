@@ -41,4 +41,8 @@
     <string name="please_enter_a_query_to_search">Please enter a query to search</string>
     <string name="some_error_occurred_please_try_again_later">Some Error Occurred please try again later!</string>
     <string name="search_image_ratio">16:9</string>
+    <string name="posts">Posts</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+    <string name="todo">TODO</string>
 </resources>

@@ -21,12 +21,12 @@
         tools:layout="@layout/fragment_reels" />
     <fragment
         android:id="@+id/likedScreen"
-        android:name="com.hiteshchopra.instagramclone.ui.home.fragment.LikedScreen"
+        android:name="com.hiteshchopra.instagramclone.ui.home.fragment.notificationsfragment.NotificationsFragment"
         android:label="fragment_liked"
-        tools:layout="@layout/fragment_liked" />
+        tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/accountScreen"
-        android:name="com.hiteshchopra.instagramclone.ui.home.fragment.AccountFragment"
+        android:name="com.hiteshchopra.instagramclone.ui.home.fragment.accountfragment.AccountFragment"
         android:label="fragment_account"
         tools:layout="@layout/fragment_account_screen" />
 </navigation>

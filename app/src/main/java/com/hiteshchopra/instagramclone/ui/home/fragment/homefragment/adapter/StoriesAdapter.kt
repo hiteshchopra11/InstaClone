@@ -3,13 +3,12 @@ package com.hiteshchopra.instagramclone.ui.home.fragment.homefragment.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.hiteshchopra.domain.model.Stories
+import com.hiteshchopra.data.local.stories.entity.StoriesEntity
 import com.hiteshchopra.instagramclone.databinding.StoryItemBinding
 
 class StoriesAdapter(
-    private val list: List<Stories>,
-) :
-    RecyclerView.Adapter<StoriesAdapter.ViewHolder>() {
+    private val list: List<StoriesEntity>,
+) : RecyclerView.Adapter<StoriesAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: StoryItemBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -25,7 +24,8 @@ class StoriesAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binding.story = list[position]
+        holder.binding.story = list[position].image
+        holder.binding.name = list[position].name
     }
 
     override fun getItemCount(): Int {
